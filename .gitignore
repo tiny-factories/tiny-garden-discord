@@ -63,3 +63,9 @@ typings/
 # package-lock
 package-lock.json
 yarn.lock
+
+# vercel
+now.json
+
+# nova
+.nova/

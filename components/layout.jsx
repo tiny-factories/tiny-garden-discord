@@ -1,13 +1,13 @@
-import React from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
-import { useCurrentUser } from '@/hooks/index';
+import React from "react";
+import Head from "next/head";
+import Link from "next/link";
+import { useCurrentUser } from "@/hooks/index";
 
 export default function Layout({ children }) {
   const [user, { mutate }] = useCurrentUser();
   const handleLogout = async () => {
-    await fetch('/api/auth', {
-      method: 'DELETE',
+    await fetch("/api/auth", {
+      method: "DELETE",
     });
     mutate(null);
   };
@@ -27,9 +27,9 @@ export default function Layout({ children }) {
             margin: 0;
             padding: 0;
             color: #111;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-              'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-              'Helvetica Neue', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+              "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+              "Helvetica Neue", sans-serif;
             background-color: #fff;
           }
           h2 {
@@ -103,7 +103,7 @@ export default function Layout({ children }) {
             float: left;
           }
           nav:after {
-            content: '';
+            content: "";
             clear: both;
             display: table;
           }
@@ -122,7 +122,7 @@ export default function Layout({ children }) {
         `}
       </style>
       <Head>
-        <title>Next.js + MongoDB App</title>
+        <title>🌱 Tiny Garden</title>
         <meta
           key="viewport"
           name="viewport"
@@ -146,7 +146,7 @@ export default function Layout({ children }) {
         <nav>
           <Link href="/">
             <a>
-              <h1>Next.js + MongoDB App</h1>
+              <h1>🌱 Tiny Garden</h1>
             </a>
           </Link>
           <div>
@@ -177,28 +177,14 @@ export default function Layout({ children }) {
       <main>{children}</main>
       <footer>
         <p>
-          Made with
-          {' '}
-          <span role="img" aria-label="Love">
-            ❤️
-          </span>
-          ,
-          {' '}
-          <span role="img" aria-label="Fire">
-            🔥
-          </span>
-          , and a keyboard by
-          {' '}
-          <a href="https://hoangvvo.com/">Hoang Vo</a>
-          .
-        </p>
-        <p>
-          Source code is on
-          {' '}
-          <a href="https://github.com/hoangvvo/nextjs-mongodb-app">Github</a>
-          .
+          A{" "}
+          <a href="https://github.com/hoangvvo/nextjs-mongodb-app">
+            tiny factories
+          </a>{" "}
+          project based on an open source{" "}
+          <a href="https://github.com/hoangvvo/nextjs-mongodb-app">project</a>.
         </p>
       </footer>
     </>
   );
-};
+}
