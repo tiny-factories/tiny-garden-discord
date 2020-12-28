@@ -1,0 +1,49 @@
+{
+  "name": "nextjs-mongodb-app",
+  "version": "1.0.0",
+  "description": "Full fledged app made with Next.JS and MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoangvvo/nextjs-mongodb-app.git"
+  },
+  "author": "Hoang Vo (https://hoangvvo.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hoangvvo/nextjs-mongodb-app/issues"
+  },
+  "homepage": "https://github.com/hoangvvo/nextjs-mongodb-app#readme",
+  "dependencies": {
+    "@sendgrid/mail": "^7.4.0",
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.23.0",
+    "connect-mongo": "^3.2.0",
+    "dotenv": "^8.2.0",
+    "express-session": "^1.17.1",
+    "mongodb": "^3.6.3",
+    "multer": "^1.4.2",
+    "nanoid": "^3.1.18",
+    "next": "^10.0.3",
+    "next-connect": "^0.9.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "swr": "^0.3.9",
+    "validator": "^13.1.17"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.14.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5"
+  }
+}
