@@ -155,9 +155,9 @@ export default function Layout({ children }) {
                 <Link href="/login">
                   <a>Sign in</a>
                 </Link>
-                <Link href="/signup">
+                {/* <Link href="/signup">
                   <a>Sign up</a>
-                </Link>
+                </Link> */}
               </>
             ) : (
               <>
