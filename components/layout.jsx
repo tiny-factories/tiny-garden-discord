@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { useCurrentUser } from "@/hooks/index";
+import Navagation from "@/components/navagation";
 
 export default function Layout({ children }) {
   const [user, { mutate }] = useCurrentUser();
@@ -21,12 +22,12 @@ export default function Layout({ children }) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         <meta
-          name="description"
+          name="Tiny Garden"
           content="nextjs-mongodb-app is a continously developed app built with Next.JS and MongoDB. This project goes further and attempts to integrate top features as seen in real-life apps."
         />
         <meta property="og:title" content="Next.js + MongoDB App" />
         <meta
-          property="og:description"
+          property="og:Tiny Garden"
           content="nextjs-mongodb-app is a continously developed app built with Next.JS and MongoDB. This project goes further and attempts to integrate top features as seen in real-life apps."
         />
         <meta
@@ -35,35 +36,7 @@ export default function Layout({ children }) {
         />
       </Head>
       <header>
-        <nav>
-          <Link href="/">
-            <a>
-              <h1>🌱 Tiny Garden</h1>
-            </a>
-          </Link>
-          <div>
-            {!user ? (
-              <>
-                <Link href="/login">
-                  <a>Sign in</a>
-                </Link>
-                {/* <Link href="/signup">
-                  <a>Sign up</a>
-                </Link> */}
-              </>
-            ) : (
-              <>
-                <Link href={`/user/${user._id}`}>
-                  <a>Profile</a>
-                </Link>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a tabIndex={0} role="button" onClick={handleLogout}>
-                  Logout
-                </a>
-              </>
-            )}
-          </div>
-        </nav>
+        <Navagation />
       </header>
 
       <main>{children}</main>

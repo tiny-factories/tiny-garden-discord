@@ -8,6 +8,7 @@ import Posts from "@/components/post/posts";
 import { extractUser } from "@/lib/api-helpers";
 import { findUserById } from "@/db/index";
 import { defaultProfilePicture } from "@/lib/default";
+import { Tabs, TabLink, TabContent } from "react-tabs-redux";
 
 export default function UserPage({ user }) {
   if (!user) return <Error statusCode={404} />;
@@ -75,8 +76,26 @@ export default function UserPage({ user }) {
       </div>
       <div>
         {/* TODO: @will -  Add tabs for Channel vs all activity */}
-        <h3>Personal Channel</h3>
-        <Posts slackChannelName={user.slackChannelName} />
+        <Tabs
+          className="tabs tabs-1"
+          onChange={(tab) => console.log(`Tab selected: ${tab}`)} // eslint-disable-line no-console
+        >
+          <div className="tab-links">
+            <TabLink to="tab1">Personal</TabLink>
+            <TabLink to="tab2">All Activity</TabLink>
+          </div>
+
+          <div className="content">
+            <TabContent for="tab1">
+              <h3>Personal Channel</h3>
+              <Posts slackChannelName={user.slackChannelName} />
+            </TabContent>
+            <TabContent for="tab2">
+              <h3>Coming Soon</h3>
+              <div>¯\_(ツ)_/¯</div>
+            </TabContent>
+          </div>
+        </Tabs>
       </div>
     </>
   );

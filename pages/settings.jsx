@@ -133,7 +133,7 @@ const ProfileSection = () => {
             <TabLink to="tab1">Profile</TabLink>
             <TabLink to="tab2">Tiny Factories</TabLink>
             <TabLink to="tab3">Privacy</TabLink>
-            <TabLink to="tab4">Billing</TabLink>
+            <TabLink to="tab4">Membership</TabLink>
           </div>
           <div class="fl w-50">
             <TabContent for="tab1">
@@ -242,10 +242,20 @@ const ProfileSection = () => {
                 </form>
               </div>
             </TabContent>
-            <TabContent for="tab2a">
+            <TabContent for="tab2">
               <div class="w-100 w-50-ns">
                 <form onSubmit={handleSubmit}>
                   <h2>Coming Soon</h2>
+                  <label htmlFor="tinyprofilecard">
+                    TinyProfile Card
+                    <input
+                      type="file"
+                      id="tinyProfileCard"
+                      name="tinyProfileCard"
+                      accept="image/png, image/jpeg"
+                      ref={profilePictureRef}
+                    />
+                  </label>
                   <button disabled={isUpdating} type="submit">
                     Save
                   </button>
