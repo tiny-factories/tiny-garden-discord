@@ -1,5 +1,5 @@
-import session from 'express-session';
-import connectMongo from 'connect-mongo';
+import session from "express-session";
+import connectMongo from "connect-mongo";
 
 const MongoStore = connectMongo(session);
 
@@ -13,5 +13,8 @@ export default function sessionMiddleware(req, res, next) {
     resave: false,
     saveUninitialized: false,
     store: mongoStore,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 14, // expires in 14 days
+    },
   })(req, res, next);
 }
