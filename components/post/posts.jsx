@@ -44,7 +44,7 @@ function Post({ post }) {
                 src={user.profilePicture || defaultProfilePicture(user._id)}
                 alt={user.slackAuthorName}
               />
-              <b>{user.slackAuthorName}</b>
+              <b>{user.type}</b>
             </a>
           </Link>
         )}
