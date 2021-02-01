@@ -34,6 +34,12 @@ export default function Layout({ children }) {
           property="og:image"
           content="https://repository-images.githubusercontent.com/201392697/5d392300-eef3-11e9-8e20-53310193fbfd"
         />
+        <script
+          async
+          defer
+          data-website-id="fc6b6113-ad42-45f5-99c1-a36b8667e440"
+          src="https://umami.tiny-factories.vercel.app/umami.js"
+        ></script>
       </Head>
       <header>
         <Navagation />

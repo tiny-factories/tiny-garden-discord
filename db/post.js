@@ -38,9 +38,28 @@ export async function insertPost(db, { content, creatorId }) {
     .collection("posts")
     .insertOne({
       _id: nanoid(12),
+      type: "post",
+      creatorId,
       content,
       creatorId,
+      discordChannelId: "website",
       createdAt: new Date(),
+      updateddAt: new Date(),
     })
     .then(({ ops }) => ops[0]);
 }
+
+// export async function insertPost(db, { content, creatorId }) {
+//   return db
+//     .collection("posts")
+//     .insertOne({
+//       _id: nanoid(12),
+//       type,
+//       creatorId,
+//       discordChannelId,
+//       content,
+//       createdAt: new Date(),
+//       updatedAt: new Date(),
+//     })
+//     .then(({ ops }) => ops[0]);
+// }

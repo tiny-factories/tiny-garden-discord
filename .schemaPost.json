@@ -1,0 +1,16 @@
+{
+  "_id": {
+    "$oid": "601566ec77c75406895b7a5d"
+  },
+  "type": "post",
+  "creatorId": "MQc2aPSY0763",
+  "discordChannelId": "",
+  "content": "Whats does args get you",
+  "createdAt": {
+    "$date": "2021-01-30T14:02:20.737Z"
+  },
+  "updatedAt": {
+    "$date": "2021-01-30T14:02:20.737Z"
+  },
+  "__v": 0
+}

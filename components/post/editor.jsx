@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useCurrentUser } from '@/hooks/index';
+import React, { useState } from "react";
+import { useCurrentUser } from "@/hooks/index";
 
 export default function PostEditor() {
   const [user] = useCurrentUser();
@@ -8,7 +8,7 @@ export default function PostEditor() {
 
   if (!user) {
     return (
-      <div style={{ color: '#555', textAlign: 'center' }}>
+      <div style={{ color: "#555", textAlign: "center" }}>
         Please sign in to post
       </div>
     );
@@ -17,36 +17,62 @@ export default function PostEditor() {
   async function hanldeSubmit(e) {
     e.preventDefault();
     const body = {
+      type: "post",
+
       content: e.currentTarget.content.value,
+      discordChannelId: "",
     };
     if (!e.currentTarget.content.value) return;
-    e.currentTarget.content.value = '';
-    const res = await fetch('/api/posts', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    e.currentTarget.content.value = "";
+    const res = await fetch("/api/posts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     });
     if (res.ok) {
-      setMsg('Posted!');
+      setMsg("Posted!");
       setTimeout(() => setMsg(null), 5000);
     }
   }
 
   return (
     <>
-      <p style={{ color: '#0070f3', textAlign: 'center' }}>
-        {msg}
-      </p>
-      <form onSubmit={hanldeSubmit} style={{ flexDirection: 'row' }} autoComplete="off">
-        <label htmlFor="name">
-          <input
-            name="content"
-            type="text"
-            placeholder="Say something, I'm giving up on you..."
-          />
-        </label>
-        <button type="submit" style={{ marginLeft: '0.5rem' }}>Post</button>
-      </form>
+      <style jsx>
+        {`
+          div {
+            margin: auto;
+            width: 500px;
+          }
+          input {
+            background: #ffffff;
+            border: 1px solid #000000;
+            box-sizing: border-box;
+            height: 40px;
+          }
+          button {
+            background: #000000;
+            height: 40px;
+            margin-left: 0.5rem;
+          }
+        `}
+      </style>
+      <div>
+        <p>{msg}</p>
+        <form
+          onSubmit={hanldeSubmit}
+          style={{ flexDirection: "row" }}
+          autoComplete="off"
+        >
+          <label htmlFor="name">
+            <input
+              name="content"
+              type="text"
+              placeholder="write and share a lil note, or life upddate, or sth silly"
+            />
+          </label>
+          <button type="submit">Post</button>
+        </form>
+      </div>
     </>
   );
 }

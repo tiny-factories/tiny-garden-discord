@@ -10,15 +10,13 @@ const IndexPage = () => {
     <>
       <div style={{ marginBottom: "2rem" }}>
         {/* <h2>Hello, {user ? user.name : "stranger"}!</h2> */}
-        <h2>
-          👋, we are still finishing development <br /> but this will be the
-          future home of the <br />
-          Tiny Factories Community.
-        </h2>
-
-        <p>Have a wonderful day.</p>
-      </div>
-      <div>
+        <div className="ascii small-ascii">
+          <p>
+            Heyo~! This is a small social site. You can submit logs of what
+            you’ve been up to as a casual creative (of any kind). <br />
+            Have a wonderful day.~*
+          </p>
+        </div>
         <h3>
           Testing feed{" "}
           <span role="img" aria-label="Earth">

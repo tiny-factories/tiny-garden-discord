@@ -9,7 +9,17 @@ const ProfileSection = () => {
 
   const nameRef = useRef();
   const prounounsRef = useRef();
+  const usernameRef = useRef();
   const bioRef = useRef();
+  const tinyprofilecardRef = useRef();
+  const discordRef = useRef();
+
+  const twitterRef = useRef();
+  const arenaRef = useRef();
+  const multiverseRef = useRef();
+  const siteRef = useRef();
+  const newsletterRef = useRef();
+  const supportRef = useRef();
 
   const profilePictureRef = useRef();
   const [msg, setMsg] = useState({ message: "", isError: false });
@@ -19,6 +29,8 @@ const ProfileSection = () => {
     {
       /* pronounsRef.current.value = user.pronouns; */
     }
+    usernameRef.current.value = user.username;
+    bioRef.current.value = user.bio;
   }, [user]);
 
   const handleSubmit = async (event) => {
@@ -30,6 +42,9 @@ const ProfileSection = () => {
       formData.append("profilePicture", profilePictureRef.current.files[0]);
     }
     formData.append("name", nameRef.current.value);
+    formData.append("pronouns", pronounsRef.current.value);
+    formData.append("username", usernameRef.current.value);
+    formData.append("bio", bioRef.current.value);
     const res = await fetch("/api/user", {
       method: "PATCH",
       body: formData,
@@ -135,6 +150,38 @@ const ProfileSection = () => {
                       ref={nameRef}
                     />
                   </label>
+                  {/* <label htmlFor="pronouns">
+                    Pronouns
+                    <input
+                      required
+                      id="pronouns"
+                      name="pronouns"
+                      type="text"
+                      placeholder="pronouns"
+                      ref={nameRef}
+                    />
+                  </label> */}
+                  {/* <label htmlFor="username">
+                    Username
+                    <input
+                      required
+                      id="username"
+                      name="username"
+                      type="text"
+                      placeholder="minimalPenguin"
+                      ref={usernameRef}
+                    />
+                  </label> */}
+                  {/* <label htmlFor="bio">
+                    Bio
+                    <textarea
+                      id="bio"
+                      name="bio"
+                      type="text"
+                      placeholder="Bio"
+                      ref={bioRef}
+                    />
+                  </label> */}
                   <label htmlFor="avatar">
                     Profile picture
                     <input
@@ -145,6 +192,50 @@ const ProfileSection = () => {
                       ref={profilePictureRef}
                     />
                   </label>
+                  {/* <label htmlFor="pronouns">
+                    Name
+                    <input
+                      required
+                      id="pronouns"
+                      name="pronouns"
+                      type="text"
+                      placeholder="pronouns"
+                      ref={usernameRef}
+                    />
+                  </label> */}
+                  {/* <label htmlFor="username">
+                    Twitter
+                    <input
+                      required
+                      id="twitter"
+                      name="username"
+                      type="text"
+                      placeholder="twitter.com/"
+                      ref={usernameRef}
+                    />
+                  </label>
+                  <label htmlFor="username">
+                    Are.na
+                    <input
+                      required
+                      id="arena"
+                      name="username"
+                      type="text"
+                      placeholder="twitter.com/"
+                      ref={usernameRef}
+                    />
+                  </label>
+                  <label htmlFor="username">
+                    Site
+                    <input
+                      required
+                      id="username"
+                      name="username"
+                      type="text"
+                      placeholder="twitter.com/"
+                      ref={usernameRef}
+                    />
+                  </label> */}
                   <button disabled={isUpdating} type="submit">
                     Save
                   </button>{" "}

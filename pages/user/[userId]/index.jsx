@@ -12,7 +12,15 @@ import { Tabs, TabLink, TabContent } from "react-tabs-redux";
 
 export default function UserPage({ user }) {
   if (!user) return <Error statusCode={404} />;
-  const { name, email, bio, username, profilePicture, _id } = user || {};
+  const {
+    name,
+    bio,
+    nouns,
+    profilePicture,
+    _id,
+    themeBackground,
+    themeHighlight,
+  } = user || {};
   const [currentUser] = useCurrentUser();
   const isCurrentUser = currentUser?._id === user._id;
   return (
@@ -29,7 +37,6 @@ export default function UserPage({ user }) {
           img {
             width: 10rem;
             height: auto;
-            border-radius: 50%;
             box-shadow: rgba(0, 0, 0, 0.05) 0 10px 20px 1px;
             margin-right: 1.5rem;
             background-color: #f3f3f3;
@@ -45,6 +52,13 @@ export default function UserPage({ user }) {
           a {
             margin-left: 0.25rem;
           }
+          .pronoun {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 16px;
+            color: rgba(0, 0, 0, 0.5);
+          }
         `}
       </style>
       <Head>
@@ -59,26 +73,29 @@ export default function UserPage({ user }) {
         />
         <section>
           <div>
-            <h2>{name}</h2>
-            <p>{username}</p>
+            <h2>
+              {user.name}
+              <span className="pronoun"> ({user.nouns})</span>
+            </h2>
+            <p>{bio}</p>
+            <Link href={`${user.linkUrl}`}>
+              <a>
+                <b>{user.linkName}</b>
+              </a>
+            </Link>
 
-            {isCurrentUser && (
+            {/* {isCurrentUser && (
               <Link href="/settings">
                 <button type="button">Edit</button>
               </Link>
-            )}
+            )} */}
           </div>
-          Bio
-          <p>{bio}</p>
-          Email
-          <p>{email}</p>
         </section>
       </div>
-      <div>
-        {/* TODO: @will -  Add tabs for Channel vs all activity */}
+      <div className="">
         <Tabs
           className="tabs tabs-1"
-          onChange={(tab) => console.log(`Tab selected: ${tab}`)} // eslint-disable-line no-console
+          onChange={(tab) => console.log(`Tab selected: ${tab}`)}
         >
           <div className="tab-links">
             <TabLink to="tab1">Personal</TabLink>
@@ -88,11 +105,13 @@ export default function UserPage({ user }) {
           <div className="content">
             <TabContent for="tab1">
               <h3>Personal Channel</h3>
-              <Posts slackChannelName={user.slackChannelName} />
+              <Posts discordChannelId={user.discordChannelId} />
             </TabContent>
             <TabContent for="tab2">
               <h3>Coming Soon</h3>
-              <div>¯\_(ツ)_/¯</div>
+              <Posts creatorId={user._id} />
+
+              <p>🚧 This will show all posts you share on the plaform</p>
             </TabContent>
           </div>
         </Tabs>
