@@ -18,11 +18,9 @@ function Post({ post }) {
           article {
             margin: auto;
             width: 500px;
-            background: #fff;
-            border: 1px solid #000;
             box-sizing: border-box;
             padding: 1.5rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
           }
           div:hover {
           }
@@ -41,19 +39,20 @@ function Post({ post }) {
       {user && (
         <article
           style={{
-            background: `{user.themeBackground}`,
+            background: `${user.themeBackground}`,
             border: `1px solid ${user.themeHighlight}`,
           }}
         >
           <p>{post.content}</p>
           <div>
             <Link href={`/user/${user._id}`}>
-              <a style={{ display: "inline-flex", alignItems: "center" }}></a>
+              <a>
+                <div className="postMeta">
+                  {user.name} {user.symbol}{" "}
+                  {new Date(post.createdAt).toLocaleString()}
+                </div>
+              </a>
             </Link>
-            <div className="postMeta">
-              {user.name} {user.symbol}{" "}
-              {new Date(post.createdAt).toLocaleString()}
-            </div>
           </div>
         </article>
       )}{" "}

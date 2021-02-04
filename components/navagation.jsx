@@ -59,7 +59,7 @@ export default function Navagation({ post }) {
           ) : (
             <>
               <Link href={`/user/${user._id}`}>
-                <a className="nav-item">Garden</a>
+                <a className="nav-item">My garden</a>
               </Link>
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a tabIndex={0} role="button" onClick={handleLogout}>

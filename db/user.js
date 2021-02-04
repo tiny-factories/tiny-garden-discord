@@ -40,6 +40,17 @@ export async function insertUser(
       password,
       name,
       bio,
+      nouns,
+      symbol,
+      linkName,
+      linkUrl,
+      membership,
+      membershipSince,
+      membershipLastPayment,
+      discordChannelId,
+      discordAccountId,
+      themeBackground,
+      themeHighlight,
     })
     .then(({ ops }) => ops[0]);
 }

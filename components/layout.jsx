@@ -23,12 +23,12 @@ export default function Layout({ children }) {
         />
         <meta
           name="Tiny Garden"
-          content="nextjs-mongodb-app is a continously developed app built with Next.JS and MongoDB. This project goes further and attempts to integrate top features as seen in real-life apps."
+          content="Tiny Garden is a public facing community around tiny factories."
         />
-        <meta property="og:title" content="Next.js + MongoDB App" />
+        <meta property="og:title" content="Tiny Garden" />
         <meta
           property="og:Tiny Garden"
-          content="nextjs-mongodb-app is a continously developed app built with Next.JS and MongoDB. This project goes further and attempts to integrate top features as seen in real-life apps."
+          content="Tiny Garden is a public facing community around tiny factories."
         />
         <meta
           property="og:image"
@@ -47,14 +47,11 @@ export default function Layout({ children }) {
 
       <main>{children}</main>
       <footer>
-        <p>
-          A{" "}
-          <a href="https://github.com/hoangvvo/nextjs-mongodb-app">
-            tiny factories
-          </a>{" "}
-          project based on an open source{" "}
-          <a href="https://github.com/hoangvvo/nextjs-mongodb-app">project</a>.
-        </p>
+        <div id="wcb" class="carbonbadge"></div>
+        <script
+          src="https://unpkg.com/website-carbon-badges@1.1.1/b.min.js"
+          defer
+        ></script>
       </footer>
     </>
   );
