@@ -48,7 +48,7 @@ export async function insertUser(
       membershipSince,
       membershipLastPayment,
       discordChannelId,
-      discordAccountId,
+      creatorId,
       themeBackground,
       themeHighlight,
     })

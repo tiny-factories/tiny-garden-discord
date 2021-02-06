@@ -18,6 +18,7 @@ export default function UserPage({ user }) {
     nouns,
     profilePicture,
     _id,
+    creatorId,
     themeBackground,
     themeHighlight,
   } = user || {};
@@ -31,7 +32,6 @@ export default function UserPage({ user }) {
             margin: auto;
             margin-top: 2.55rem;
             margin-bottom: 2.5rem;
-
             width: 500px;
             display: flex;
             alignitems: center;
@@ -99,9 +99,7 @@ export default function UserPage({ user }) {
           </h2>
           <p>{bio}</p>
           <Link href={`${user.linkUrl}`}>
-            <a>
-              <b>{user.linkName}</b>
-            </a>
+            <a>{user.linkName} ↗</a>
           </Link>
 
           {/* {isCurrentUser && (
@@ -130,6 +128,7 @@ export default function UserPage({ user }) {
           <div className="content">
             <TabContent for="tab1">
               <Posts creatorId={user._id} />
+              {/* <Posts creatorId={user.creatorId} /> */}
             </TabContent>
             <TabContent for="tab2">
               <p>🚧 This will show all posts you share on the plaform</p>

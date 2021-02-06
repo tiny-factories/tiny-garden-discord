@@ -130,10 +130,10 @@ h1 {
 }
 
 h2 {
+  color: var(--text);
+
   font-size: 22px;
   font-weight: 300;
-  margin-top: 50px;
-  margin-bottom: 50px;
   text-align: center;
   line-height: 1.8;
 }

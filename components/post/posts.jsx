@@ -65,19 +65,17 @@ const PAGE_SIZE = 10;
   /* postBy={user.slackId} */
 }
 
-export function usePostPages({ discordChannelId } = {}) {
+export function usePostPages({ creatorId } = {}) {
   return useSWRInfinite(
     (index, previousPageData) => {
       // reached the end
       if (previousPageData && previousPageData.posts.length === 0) return null;
-
       // first page, previousPageData is null
       if (index === 0) {
         return `/api/posts?limit=${PAGE_SIZE}${
-          discordChannelId ? `&by=${discordChannelId}` : ""
+          creatorId ? `&by=${creatorId}` : ""
         }`;
       }
-
       // using oldest posts createdAt date as cursor
       // We want to fetch posts which has a datethat is
       // before (hence the .getTime() - 1) the last post's createdAt
@@ -86,9 +84,8 @@ export function usePostPages({ discordChannelId } = {}) {
           previousPageData.posts[previousPageData.posts.length - 1].createdAt
         ).getTime() - 1
       ).toJSON();
-
       return `/api/posts?from=${from}&limit=${PAGE_SIZE}${
-        discordChannelId ? `&by=${discordChannelId}` : ""
+        creatorId ? `&by=${creatorId}` : ""
       }`;
     },
     fetcher,
@@ -97,12 +94,8 @@ export function usePostPages({ discordChannelId } = {}) {
     }
   );
 }
-
-export default function Posts({ discordChannelId }) {
-  const { data, error, size, setSize } = usePostPages({
-    discordChannelId,
-  });
-
+export default function Posts({ creatorId }) {
+  const { data, error, size, setSize } = usePostPages({ creatorId });
   const posts = data
     ? data.reduce((acc, val) => [...acc, ...val.posts], [])
     : [];
@@ -112,7 +105,6 @@ export default function Posts({ discordChannelId }) {
   const isEmpty = data?.[0].posts?.length === 0;
   const isReachingEnd =
     isEmpty || (data && data[data.length - 1]?.posts.length < PAGE_SIZE);
-
   return (
     <div>
       {posts.map((post) => (

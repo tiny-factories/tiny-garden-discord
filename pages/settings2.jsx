@@ -129,15 +129,15 @@ const ProfileSection = () => {
         {/* todo: @will background iamge */}
 
         <Tabs>
-          <div class="fl w-50">
+          <div className="fl w-50">
             <TabLink to="tab1">Profile</TabLink>
             <TabLink to="tab2">Tiny Factories</TabLink>
             <TabLink to="tab3">Privacy</TabLink>
             <TabLink to="tab4">Membership</TabLink>
           </div>
-          <div class="fl w-50">
+          <div className="fl w-50">
             <TabContent for="tab1">
-              <div class="w-100 w-50-ns">
+              <div className="w-100 w-50-ns">
                 <form onSubmit={handleSubmit}>
                   <label htmlFor="name">
                     Name
@@ -243,7 +243,7 @@ const ProfileSection = () => {
               </div>
             </TabContent>
             <TabContent for="tab2">
-              <div class="w-100 w-50-ns">
+              <div className="w-100 w-50-ns">
                 <form onSubmit={handleSubmit}>
                   <h2>Coming Soon</h2>
                   <label htmlFor="tinyprofilecard">
@@ -263,7 +263,7 @@ const ProfileSection = () => {
               </div>
             </TabContent>
             <TabContent for="tab3">
-              <div class="w-100 w-50-ns">
+              <div className="w-100 w-50-ns">
                 <p>account password</p>
 
                 <form onSubmit={handleSubmitPasswordChange}>
@@ -293,7 +293,7 @@ const ProfileSection = () => {
               </div>
             </TabContent>
             <TabContent for="tab4">
-              <div class="w-100 w-50-ns">
+              <div className="w-100 w-50-ns">
                 <form onSubmit={handleSubmit}>
                   <h2>Coming Soon</h2>
                   <button disabled={isUpdating} type="submit">

@@ -47,7 +47,7 @@ export default function Layout({ children }) {
 
       <main>{children}</main>
       <footer>
-        <div id="wcb" class="carbonbadge"></div>
+        <div id="wcb" className="carbonbadge"></div>
         <script
           src="https://unpkg.com/website-carbon-badges@1.1.1/b.min.js"
           defer
