@@ -38,11 +38,11 @@ export async function insertPost(db, { content, creatorId }) {
     .collection("posts")
     .insertOne({
       _id: nanoid(12),
+      creatorId,
       type: "post",
-      creatorId,
+      source: "website",
       content,
-      creatorId,
-      discordChannelId: "website",
+      discordChannelId: "",
       createdAt: new Date(),
       updateddAt: new Date(),
     })
