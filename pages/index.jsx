@@ -12,7 +12,7 @@ const IndexPage = () => {
         {`
           div {
             margin: auto;
-            width: 500px;
+            max-width: 500px;
           }
           .hero-text {
           }
