@@ -31,6 +31,7 @@
     "nanoid": "^3.1.18",
     "next": "^10.0.3",
     "next-connect": "^0.9.1",
+    "next-pwa": "^5.0.5",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "react": "^17.0.1",

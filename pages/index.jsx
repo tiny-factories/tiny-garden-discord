@@ -35,11 +35,13 @@ const IndexPage = () => {
         {!user ? (
           <>
             <div className=" ">
+              <div className=" "></div>
               <p className="hero-text">
                 Heyo~! This is a small social site. You can submit logs of what
                 you’ve been up to as a casual creative (of any kind). <br />
                 Have a wonderful day.~*
               </p>
+              <div className=" "></div>
             </div>
           </>
         ) : (
