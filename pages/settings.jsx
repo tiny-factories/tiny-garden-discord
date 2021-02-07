@@ -8,17 +8,24 @@ const ProfileSection = () => {
   const [isUpdating, setIsUpdating] = useState(false);
 
   const nameRef = useRef();
-  const prounounsRef = useRef();
+  const pronounsRef = useRef();
   const bioRef = useRef();
+
+  const symbolRef = useRef();
+  const themeHighlightRef = useRef();
+  const themeBackgroundColorRef = useRef();
 
   const profilePictureRef = useRef();
   const [msg, setMsg] = useState({ message: "", isError: false });
 
   useEffect(() => {
     nameRef.current.value = user.name;
+    pronounsRef.current.value = user.nouns;
+    themeBackgroundColorRef.current.value = user.themeBackground;
     {
-      /* pronounsRef.current.value = user.pronouns; */
+      /* themeHighlightColorRef.current.value = user.themeHighlight; */
     }
+    symbolRef.current.value = user.symbol;
   }, [user]);
 
   const handleSubmit = async (event) => {
@@ -84,7 +91,19 @@ const ProfileSection = () => {
 
   return (
     <>
-      <style jsx>{``}</style>
+      <style jsx>{`
+        .feeds {
+          margin: auto;
+          margin-top: 5rem;
+          width: 500px;
+        }
+        .tab-container {
+          display: inline-block;
+        }
+        .tab-links {
+          display: inline-block;
+        }
+      `}</style>
       <Head>
         <title>Settings</title>
       </Head>
@@ -113,12 +132,20 @@ const ProfileSection = () => {
         {/* todo: @will Add Slack Channel ID and Name */}
         {/* todo: @will background iamge */}
 
-        <Tabs>
-          <div className="fl w-50">
-            <TabLink to="tab1">Profile</TabLink>
-            <TabLink to="tab2">Tiny Factories</TabLink>
-            <TabLink to="tab3">Privacy</TabLink>
-            <TabLink to="tab4">Membership</TabLink>
+        <Tabs disableInlineStyles={false} className="tabs">
+          <div className="tab-container">
+            <div className="tab-links">
+              <TabLink to="tab1">Profile</TabLink>
+            </div>
+            <div className="tab-links">
+              <TabLink to="tab2">Tiny Factories</TabLink>
+            </div>
+            <div className="tab-links">
+              <TabLink to="tab3">Privacy</TabLink>
+            </div>
+            <div className="tab-links">
+              <TabLink to="tab4">Membership</TabLink>
+            </div>
           </div>
           <div className="fl w-50">
             <TabContent for="tab1">
@@ -135,6 +162,17 @@ const ProfileSection = () => {
                       ref={nameRef}
                     />
                   </label>
+                  <label htmlFor="pronouns">
+                    Pronouns
+                    <input
+                      required
+                      id="pronouns"
+                      name="pronouns"
+                      type="text"
+                      placeholder="pronouns"
+                      ref={pronounsRef}
+                    />
+                  </label>
                   <label htmlFor="avatar">
                     Profile picture
                     <input
@@ -145,6 +183,39 @@ const ProfileSection = () => {
                       ref={profilePictureRef}
                     />
                   </label>
+                  <label htmlFor="pronouns">
+                    Symbol
+                    <input
+                      required
+                      id="symbol"
+                      name="symbol"
+                      type="text"
+                      placeholder="☺︎"
+                      ref={symbolRef}
+                    />
+                  </label>
+                  <label htmlFor="pronouns">
+                    themeBackgroundColor
+                    <input
+                      required
+                      id="themeBackgroundColor"
+                      name="themeBackgroundColor"
+                      type="text"
+                      placeholder="#FFFFFF"
+                      ref={themeBackgroundColorRef}
+                    />
+                  </label>
+                  {/* <label htmlFor="pronouns">
+                    themeHighlightColor
+                    <input
+                      required
+                      id="themeHighlightColor"
+                      name="themeHighlightColor"
+                      type="text"
+                      placeholder="#000000"
+                      ref={themeHighlightColorRef}
+                    />
+                  </label> */}
                   <button disabled={isUpdating} type="submit">
                     Save
                   </button>{" "}

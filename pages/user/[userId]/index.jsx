@@ -102,11 +102,11 @@ export default function UserPage({ user }) {
             <a>{user.linkName} ↗</a>
           </Link>
 
-          {/* {isCurrentUser && (
-              <Link href="/settings">
-                <button type="button">Edit</button>
-              </Link>
-            )} */}
+          {isCurrentUser && (
+            <Link href="/settings">
+              <button type="button">Edit</button>
+            </Link>
+          )}
         </div>
       </div>
 
