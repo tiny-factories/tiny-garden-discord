@@ -9,7 +9,7 @@ export default function button() {
   if (!user) {
     return (
       <div style={{ color: "#555", textAlign: "center" }}>
-        Please sign in to post
+        {/* Please sign in to post */}
       </div>
     );
   }
@@ -41,7 +41,7 @@ export default function button() {
         {`
           div {
             margin: auto;
-            width: 500px;
+            max-width: 500px;
           }
           input {
             background: #ffffff;
