@@ -32,7 +32,7 @@ export default function UserPage({ user }) {
             margin: auto;
             margin-top: 2.55rem;
             margin-bottom: 2.5rem;
-            width: 500px;
+            max-width: 500px;
             display: flex;
             alignitems: center;
           }
@@ -69,7 +69,7 @@ export default function UserPage({ user }) {
           .feeds {
             margin: auto;
             margin-top: 5rem;
-            width: 500px;
+            max-width: 500px;
           }
           .tab-container {
             display: inline-block;

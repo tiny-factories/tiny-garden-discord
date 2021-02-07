@@ -24,7 +24,7 @@ export default function Layout({ children }) {
         />
 
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://metatags.io/" />
+        <meta property="og:url" content="https://garden.tinyfactories.space/" />
         <meta property="og:title" content="🌱 Tiny Garden" />
         <meta
           property="og:description"
@@ -33,7 +33,10 @@ export default function Layout({ children }) {
         <meta property="og:image" content="/public/tinygarden-opengraph.png" />
 
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://metatags.io/" />
+        <meta
+          property="twitter:url"
+          content="https://garden.tinyfactories.space"
+        />
         <meta property="twitter:title" content="🌱 Tiny Garden" />
         <meta
           property="twitter:description"

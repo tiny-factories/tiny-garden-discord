@@ -17,7 +17,7 @@ function Post({ post }) {
         {`
           article {
             margin: auto;
-            width: 500px;
+            max-width: 500px;
             box-sizing: border-box;
             padding: 1.5rem;
             margin-bottom: 1rem;
@@ -60,7 +60,7 @@ function Post({ post }) {
   );
 }
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 30;
 {
   /* postBy={user.slackId} */
 }
@@ -106,7 +106,14 @@ export default function Posts({ creatorId }) {
   const isReachingEnd =
     isEmpty || (data && data[data.length - 1]?.posts.length < PAGE_SIZE);
   return (
-    <div>
+    <div
+      style={{
+        justifyContent: "center",
+        alignItems: "center",
+        margin: "auto",
+        maxWidth: "500px",
+      }}
+    >
       {posts.map((post) => (
         <Post key={post._id} post={post} />
       ))}
@@ -115,7 +122,11 @@ export default function Posts({ creatorId }) {
           type="button"
           style={{
             background: "transparent",
-            color: "#000",
+            color: "#000000",
+            justifyContent: "center",
+            alignItems: "center",
+            margin: "auto",
+            border: "1px solid #000000",
           }}
           onClick={() => setSize(size + 1)}
           disabled={isReachingEnd || isLoadingMore}
