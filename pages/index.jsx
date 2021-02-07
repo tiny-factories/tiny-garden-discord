@@ -8,23 +8,48 @@ const IndexPage = () => {
 
   return (
     <>
-      <div style={{ marginBottom: "2rem" }}>
-        {/* <h2>Hello, {user ? user.name : "stranger"}!</h2> */}
-        <h2>
-          👋, we are still finishing development <br /> but this will be the
-          future home of the <br />
-          Tiny Factories Community.
-        </h2>
-
-        <p>Have a wonderful day.</p>
-      </div>
+      <style jsx>
+        {`
+          div {
+            margin: auto;
+            max-width: 500px;
+          }
+          .hero-text {
+          }
+          .ascii {
+            font-family: monospace;
+            white-space: pre;
+            text-align: left;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            speak: never;
+            speak-as: spell-out;
+          }
+          .small-ascii {
+          }
+        `}
+      </style>
       <div>
-        <h3>
-          Testing feed{" "}
-          <span role="img" aria-label="Earth">
-            🌎
-          </span>
-        </h3>
+        {!user ? (
+          <>
+            <div className=" ">
+              <div className=" "></div>
+              <p className="hero-text">
+                Heyo~! This is a small social site. You can submit logs of what
+                you’ve been up to as a casual creative (of any kind). <br />
+                Have a wonderful day.~*
+              </p>
+              <div className=" "></div>
+            </div>
+          </>
+        ) : (
+          <>
+            <p>Hello, {user ? user.name : "stranger"}!</p>
+          </>
+        )}
+
         <PostEditor />
         <Posts />
       </div>

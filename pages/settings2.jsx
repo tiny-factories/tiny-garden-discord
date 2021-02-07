@@ -8,24 +8,29 @@ const ProfileSection = () => {
   const [isUpdating, setIsUpdating] = useState(false);
 
   const nameRef = useRef();
-  const pronounsRef = useRef();
+  const prounounsRef = useRef();
+  const usernameRef = useRef();
   const bioRef = useRef();
+  const tinyprofilecardRef = useRef();
+  const discordRef = useRef();
 
-  const symbolRef = useRef();
-  const themeHighlightRef = useRef();
-  const themeBackgroundColorRef = useRef();
+  const twitterRef = useRef();
+  const arenaRef = useRef();
+  const multiverseRef = useRef();
+  const siteRef = useRef();
+  const newsletterRef = useRef();
+  const supportRef = useRef();
 
   const profilePictureRef = useRef();
   const [msg, setMsg] = useState({ message: "", isError: false });
 
   useEffect(() => {
     nameRef.current.value = user.name;
-    pronounsRef.current.value = user.nouns;
-    themeBackgroundColorRef.current.value = user.themeBackground;
     {
-      /* themeHighlightColorRef.current.value = user.themeHighlight; */
+      /* pronounsRef.current.value = user.pronouns; */
     }
-    symbolRef.current.value = user.symbol;
+    usernameRef.current.value = user.username;
+    bioRef.current.value = user.bio;
   }, [user]);
 
   const handleSubmit = async (event) => {
@@ -37,6 +42,9 @@ const ProfileSection = () => {
       formData.append("profilePicture", profilePictureRef.current.files[0]);
     }
     formData.append("name", nameRef.current.value);
+    formData.append("pronouns", pronounsRef.current.value);
+    formData.append("username", usernameRef.current.value);
+    formData.append("bio", bioRef.current.value);
     const res = await fetch("/api/user", {
       method: "PATCH",
       body: formData,
@@ -91,19 +99,7 @@ const ProfileSection = () => {
 
   return (
     <>
-      <style jsx>{`
-        .feeds {
-          margin: auto;
-          margin-top: 5rem;
-          width: 500px;
-        }
-        .tab-container {
-          display: inline-block;
-        }
-        .tab-links {
-          display: inline-block;
-        }
-      `}</style>
+      <style jsx>{``}</style>
       <Head>
         <title>Settings</title>
       </Head>
@@ -132,20 +128,12 @@ const ProfileSection = () => {
         {/* todo: @will Add Slack Channel ID and Name */}
         {/* todo: @will background iamge */}
 
-        <Tabs disableInlineStyles={false} className="tabs">
-          <div className="tab-container">
-            <div className="tab-links">
-              <TabLink to="tab1">Profile</TabLink>
-            </div>
-            <div className="tab-links">
-              <TabLink to="tab2">Tiny Factories</TabLink>
-            </div>
-            <div className="tab-links">
-              <TabLink to="tab3">Privacy</TabLink>
-            </div>
-            <div className="tab-links">
-              <TabLink to="tab4">Membership</TabLink>
-            </div>
+        <Tabs>
+          <div className="fl w-50">
+            <TabLink to="tab1">Profile</TabLink>
+            <TabLink to="tab2">Tiny Factories</TabLink>
+            <TabLink to="tab3">Privacy</TabLink>
+            <TabLink to="tab4">Membership</TabLink>
           </div>
           <div className="fl w-50">
             <TabContent for="tab1">
@@ -162,7 +150,7 @@ const ProfileSection = () => {
                       ref={nameRef}
                     />
                   </label>
-                  <label htmlFor="pronouns">
+                  {/* <label htmlFor="pronouns">
                     Pronouns
                     <input
                       required
@@ -170,9 +158,30 @@ const ProfileSection = () => {
                       name="pronouns"
                       type="text"
                       placeholder="pronouns"
-                      ref={pronounsRef}
+                      ref={nameRef}
                     />
-                  </label>
+                  </label> */}
+                  {/* <label htmlFor="username">
+                    Username
+                    <input
+                      required
+                      id="username"
+                      name="username"
+                      type="text"
+                      placeholder="minimalPenguin"
+                      ref={usernameRef}
+                    />
+                  </label> */}
+                  {/* <label htmlFor="bio">
+                    Bio
+                    <textarea
+                      id="bio"
+                      name="bio"
+                      type="text"
+                      placeholder="Bio"
+                      ref={bioRef}
+                    />
+                  </label> */}
                   <label htmlFor="avatar">
                     Profile picture
                     <input
@@ -183,37 +192,48 @@ const ProfileSection = () => {
                       ref={profilePictureRef}
                     />
                   </label>
-                  <label htmlFor="pronouns">
-                    Symbol
-                    <input
-                      required
-                      id="symbol"
-                      name="symbol"
-                      type="text"
-                      placeholder="☺︎"
-                      ref={symbolRef}
-                    />
-                  </label>
-                  <label htmlFor="pronouns">
-                    themeBackgroundColor
-                    <input
-                      required
-                      id="themeBackgroundColor"
-                      name="themeBackgroundColor"
-                      type="text"
-                      placeholder="#FFFFFF"
-                      ref={themeBackgroundColorRef}
-                    />
-                  </label>
                   {/* <label htmlFor="pronouns">
-                    themeHighlightColor
+                    Name
                     <input
                       required
-                      id="themeHighlightColor"
-                      name="themeHighlightColor"
+                      id="pronouns"
+                      name="pronouns"
                       type="text"
-                      placeholder="#000000"
-                      ref={themeHighlightColorRef}
+                      placeholder="pronouns"
+                      ref={usernameRef}
+                    />
+                  </label> */}
+                  {/* <label htmlFor="username">
+                    Twitter
+                    <input
+                      required
+                      id="twitter"
+                      name="username"
+                      type="text"
+                      placeholder="twitter.com/"
+                      ref={usernameRef}
+                    />
+                  </label>
+                  <label htmlFor="username">
+                    Are.na
+                    <input
+                      required
+                      id="arena"
+                      name="username"
+                      type="text"
+                      placeholder="twitter.com/"
+                      ref={usernameRef}
+                    />
+                  </label>
+                  <label htmlFor="username">
+                    Site
+                    <input
+                      required
+                      id="username"
+                      name="username"
+                      type="text"
+                      placeholder="twitter.com/"
+                      ref={usernameRef}
                     />
                   </label> */}
                   <button disabled={isUpdating} type="submit">

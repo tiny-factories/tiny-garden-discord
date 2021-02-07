@@ -6,7 +6,7 @@ import fetcher from "@/lib/fetch";
 import { defaultProfilePicture } from "@/lib/default";
 
 function Post({ post }) {
-  const user = useUser(post._id);
+  const user = useUser(post.creatorId);
   {
     /* const user = useUser(post.postBy); */
   }
@@ -15,42 +15,47 @@ function Post({ post }) {
     <>
       <style jsx>
         {`
-          div {
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+          article {
+            margin: auto;
+            width: 500px;
+            box-sizing: border-box;
             padding: 1.5rem;
-            margin-bottom: 0.5rem;
-            transition: box-shadow 0.2s ease 0s;
+            margin-bottom: 1rem;
           }
           div:hover {
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
           }
           small {
             color: #777;
           }
+          .postMeta {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 18px;
+            opacity: 0.5;
+          }
         `}
       </style>
-      <div>
-        {user && (
-          <Link href={`/user/${user._id}`}>
-            <a style={{ display: "inline-flex", alignItems: "center" }}>
-              <img
-                width="27"
-                height="27"
-                style={{
-                  borderRadius: "50%",
-                  objectFit: "cover",
-                  marginRight: "0.3rem",
-                }}
-                src={user.profilePicture || defaultProfilePicture(user._id)}
-                alt={user.slackAuthorName}
-              />
-              <b>{user.type}</b>
-            </a>
-          </Link>
-        )}
-        <p>{post.content}</p>
-        {/* <small>{new Date(post.createdAt).toLocaleString()}</small> */}
-      </div>
+      {user && (
+        <article
+          style={{
+            background: `${user.themeBackground}`,
+            border: `1px solid ${user.themeHighlight}`,
+          }}
+        >
+          <p>{post.content}</p>
+          <div>
+            <Link href={`/user/${user._id}`}>
+              <a>
+                <div className="postMeta">
+                  {user.name} {user.symbol}{" "}
+                  {new Date(post.createdAt).toLocaleString()}
+                </div>
+              </a>
+            </Link>
+          </div>
+        </article>
+      )}{" "}
     </>
   );
 }
@@ -60,19 +65,17 @@ const PAGE_SIZE = 10;
   /* postBy={user.slackId} */
 }
 
-export function usePostPages({ slackChannelName } = {}) {
+export function usePostPages({ creatorId } = {}) {
   return useSWRInfinite(
     (index, previousPageData) => {
       // reached the end
       if (previousPageData && previousPageData.posts.length === 0) return null;
-
       // first page, previousPageData is null
       if (index === 0) {
         return `/api/posts?limit=${PAGE_SIZE}${
-          slackChannelName ? `&by=${slackChannelName}` : ""
+          creatorId ? `&by=${creatorId}` : ""
         }`;
       }
-
       // using oldest posts createdAt date as cursor
       // We want to fetch posts which has a datethat is
       // before (hence the .getTime() - 1) the last post's createdAt
@@ -81,9 +84,8 @@ export function usePostPages({ slackChannelName } = {}) {
           previousPageData.posts[previousPageData.posts.length - 1].createdAt
         ).getTime() - 1
       ).toJSON();
-
       return `/api/posts?from=${from}&limit=${PAGE_SIZE}${
-        slackChannelName ? `&by=${slackChannelName}` : ""
+        creatorId ? `&by=${creatorId}` : ""
       }`;
     },
     fetcher,
@@ -92,10 +94,8 @@ export function usePostPages({ slackChannelName } = {}) {
     }
   );
 }
-
-export default function Posts({ slackChannelName }) {
-  const { data, error, size, setSize } = usePostPages({ slackChannelName });
-
+export default function Posts({ creatorId }) {
+  const { data, error, size, setSize } = usePostPages({ creatorId });
   const posts = data
     ? data.reduce((acc, val) => [...acc, ...val.posts], [])
     : [];
@@ -105,7 +105,6 @@ export default function Posts({ slackChannelName }) {
   const isEmpty = data?.[0].posts?.length === 0;
   const isReachingEnd =
     isEmpty || (data && data[data.length - 1]?.posts.length < PAGE_SIZE);
-
   return (
     <div>
       {posts.map((post) => (

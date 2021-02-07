@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useCurrentUser } from "@/hooks/index";
 
-export default function PostEditor() {
+export default function button() {
   const [user] = useCurrentUser();
 
   const [msg, setMsg] = useState(null);

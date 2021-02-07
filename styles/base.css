@@ -1,6 +1,6 @@
 :root {
-  --background: #ffe4dd;
-  --imagefilter: #ffe4dd;
+  --background: #ffffff;
+  --imagefilter: #ffffff;
   --text: #6c0ed4;
   --links: #6c0ed4;
   --ascii: #6c0ed4;
@@ -99,19 +99,6 @@ nav {
   height: 250px;
 }
 
-p.photo_description {
-  font-size: 12px;
-  font-style: italic;
-  text-align: center;
-}
-
-h3.page_top {
-  margin: auto;
-  text-align: center;
-  max-width: 450px;
-  line-height: 2;
-}
-
 .tf_images {
   display: block;
   margin-left: auto;
@@ -143,10 +130,10 @@ h1 {
 }
 
 h2 {
+  color: var(--text);
+
   font-size: 22px;
   font-weight: 300;
-  margin-top: 50px;
-  margin-bottom: 50px;
   text-align: center;
   line-height: 1.8;
 }
@@ -160,13 +147,9 @@ h3 {
 }
 
 p {
-  margin: auto;
   text-align: left;
   line-height: 1.75;
   font-size: 16px;
-  max-width: 550px;
-  margin-bottom: 20px;
-  margin-top: 20px;
 }
 p:last-child {
 }
@@ -394,10 +377,7 @@ body {
   margin: 0;
   padding: 0;
 }
-h2 {
-  color: #333;
-  text-align: center;
-}
+
 label {
   display: flex;
   margin-bottom: 0.5rem;
@@ -415,12 +395,10 @@ input,
 textarea {
   font-family: monospace;
   flex: 1 1 0%;
-  margin-left: 0.5rem;
   box-shadow: none;
   width: 100%;
   background-color: transparent;
   border: 1px solid #d8d8d8;
-  border-radius: 5px;
   outline: 0px;
   padding: 10px 25px;
 }
@@ -428,17 +406,14 @@ button {
   display: block;
   margin-bottom: 0.5rem;
   color: #fff;
-  border-radius: 5px;
   border: none;
   background-color: #000;
   cursor: pointer;
   transition: all 0.2s ease 0s;
   padding: 10px 25px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
 }
 button:hover,
 button:active {
-  transform: translate3d(0px, -1px, 0px);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 header {
@@ -457,10 +432,12 @@ nav div a {
   margin-left: 1rem;
 }
 nav h1 {
-  font-size: 1rem;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
   color: #444;
   margin: 0;
-  font-weight: 700;
   float: left;
 }
 nav:after {
@@ -479,4 +456,17 @@ footer {
   margin-top: 1rem;
   padding: 3rem;
   color: #888;
+}
+
+.ascii {
+  font-family: "Menlo Regular", monospace;
+  font-family: monospace;
+  white-space: pre;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  speak: never;
+  speak-as: spell-out;
 }

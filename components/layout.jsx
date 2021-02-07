@@ -3,6 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useCurrentUser } from "@/hooks/index";
 import Navagation from "@/components/navagation";
+import Footer from "@/components/footer";
 
 export default function Layout({ children }) {
   const [user, { mutate }] = useCurrentUser();
@@ -16,40 +17,49 @@ export default function Layout({ children }) {
     <>
       <Head>
         <title>🌱 Tiny Garden</title>
+        <meta name="title" content="🌱 Tiny Garden" />
         <meta
-          key="viewport"
-          name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          name="description"
+          content="Tiny Garden is a public facing community around Tiny Factories."
+        />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://metatags.io/" />
+        <meta property="og:title" content="🌱 Tiny Garden" />
+        <meta
+          property="og:description"
+          content="Tiny Garden is a public facing community around Tiny Factories."
+        />
+        <meta property="og:image" content="/public/tinygarden-opengraph.png" />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://metatags.io/" />
+        <meta property="twitter:title" content="🌱 Tiny Garden" />
+        <meta
+          property="twitter:description"
+          content="Tiny Garden is a public facing community around Tiny Factories."
         />
         <meta
-          name="Tiny Garden"
-          content="nextjs-mongodb-app is a continously developed app built with Next.JS and MongoDB. This project goes further and attempts to integrate top features as seen in real-life apps."
+          property="twitter:image"
+          content="/public/tinygarden-opengraph.png"
         />
-        <meta property="og:title" content="Next.js + MongoDB App" />
-        <meta
-          property="og:Tiny Garden"
-          content="nextjs-mongodb-app is a continously developed app built with Next.JS and MongoDB. This project goes further and attempts to integrate top features as seen in real-life apps."
-        />
-        <meta
-          property="og:image"
-          content="https://repository-images.githubusercontent.com/201392697/5d392300-eef3-11e9-8e20-53310193fbfd"
-        />
+        <script
+          async
+          defer
+          data-website-id="fc6b6113-ad42-45f5-99c1-a36b8667e440"
+          src="https://umami.tiny-factories.vercel.app/umami.js"
+        ></script>
+        <script
+          src="https://unpkg.com/website-carbon-badges@1.1.1/b.min.js"
+          defer
+        ></script>
       </Head>
       <header>
         <Navagation />
       </header>
 
       <main>{children}</main>
-      <footer>
-        <p>
-          A{" "}
-          <a href="https://github.com/hoangvvo/nextjs-mongodb-app">
-            tiny factories
-          </a>{" "}
-          project based on an open source{" "}
-          <a href="https://github.com/hoangvvo/nextjs-mongodb-app">project</a>.
-        </p>
-      </footer>
+      <Footer />
     </>
   );
 }
