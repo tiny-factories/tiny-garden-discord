@@ -9,7 +9,7 @@ export default function PostEditor() {
   if (!user) {
     return (
       <div style={{ color: "#555", textAlign: "center" }}>
-        Please sign in to post
+        {/* Please sign in to post */}
       </div>
     );
   }
