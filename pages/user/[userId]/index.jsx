@@ -5,6 +5,7 @@ import Error from "next/error";
 import { all } from "@/middlewares/index";
 import { useCurrentUser } from "@/hooks/index";
 import Posts from "@/components/post/posts";
+import Narratives from "@/components/narrative/posts";
 import { extractUser } from "@/lib/api-helpers";
 import { findUserById } from "@/db/index";
 import { defaultProfilePicture } from "@/lib/default";
@@ -132,6 +133,7 @@ export default function UserPage({ user }) {
             </TabContent>
             <TabContent for="tab2">
               <p>🚧 This will show all posts you share on the plaform</p>
+              <Narratives creatorId={user._id} />
             </TabContent>
           </div>
         </Tabs>

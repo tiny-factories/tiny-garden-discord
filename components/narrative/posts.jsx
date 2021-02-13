@@ -34,9 +34,71 @@ function Post({ post }) {
             line-height: 18px;
             opacity: 0.5;
           }
+          .twitter {
+          }
+          .newsletter {
+          }
+          .post {
+          }
+          .blog {
+          }
+          .rss {
+          }
         `}
       </style>
-      {post.type === "post" && user && (
+      {user && (
+        <>
+          <div
+            className="{post.type}"
+            style={{
+              border: `1px solid ${user.themeHighlight}`,
+            }}
+          >
+            {" "}
+            <p>FROM {post.type}</p>
+          </div>
+          <article
+            style={{
+              background: `${user.themeBackground}`,
+              border: `1px solid ${user.themeHighlight}`,
+            }}
+          >
+            <Link href={`${post.externalUrl}`}>
+              <a>
+                <div>
+                  <p>{post.content}</p>
+                </div>
+                <div className="postMeta">
+                  {new Date(post.createdAt).toLocaleString()}
+                </div>
+              </a>
+            </Link>
+          </article>
+        </>
+      )}{" "}
+      {/* {post.type === "rss" && (
+        <article
+          style={{
+            background: `${user.themeBackground}`,
+            border: `1px solid ${user.themeHighlight}`,
+          }}
+        >
+          {" "}
+          <p>FROM RSS</p>
+          <p>{post.content}</p>
+          <div>
+            <Link href={`/user/${user._id}`}>
+              <a>
+                <div className="postMeta">
+                  {user.name} {user.symbol}{" "}
+                  {new Date(post.createdAt).toLocaleString()}
+                </div>
+              </a>
+            </Link>
+          </div>
+        </article>
+      )} */}
+      {/* {user && (
         <article
           style={{
             background: `${user.themeBackground}`,
@@ -55,7 +117,7 @@ function Post({ post }) {
             </Link>
           </div>
         </article>
-      )}{" "}
+      )}{" "} */}
     </>
   );
 }
