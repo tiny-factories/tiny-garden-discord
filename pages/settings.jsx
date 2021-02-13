@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import Head from "next/head";
 import { useCurrentUser } from "@/hooks/index";
 import { Tabs, TabLink, TabContent } from "react-tabs-redux";
@@ -12,7 +13,7 @@ const ProfileSection = () => {
   const bioRef = useRef();
 
   const symbolRef = useRef();
-  const themeHighlightRef = useRef();
+  const themeHighlightColorRef = useRef();
   const themeBackgroundColorRef = useRef();
 
   const profilePictureRef = useRef();
@@ -21,7 +22,10 @@ const ProfileSection = () => {
   useEffect(() => {
     nameRef.current.value = user.name;
     pronounsRef.current.value = user.nouns;
+    bioRef.current.value = user.bio;
     themeBackgroundColorRef.current.value = user.themeBackground;
+    themeHighlightColorRef.current.value = user.themeHighlight;
+
     {
       /* themeHighlightColorRef.current.value = user.themeHighlight; */
     }
@@ -92,7 +96,7 @@ const ProfileSection = () => {
   return (
     <>
       <style jsx>{`
-        .feeds {
+        .div {
           margin: auto;
           margin-top: 5rem;
           width: 500px;
@@ -102,6 +106,13 @@ const ProfileSection = () => {
         }
         .tab-links {
           display: inline-block;
+        }
+        article {
+          margin: auto;
+          max-width: 500px;
+          box-sizing: border-box;
+          padding: 1.5rem;
+          margin-bottom: 1rem;
         }
       `}</style>
       <Head>
@@ -138,7 +149,7 @@ const ProfileSection = () => {
               <TabLink to="tab1">Profile</TabLink>
             </div>
             <div className="tab-links">
-              <TabLink to="tab2">Tiny Factories</TabLink>
+              <TabLink to="tab2">Theme</TabLink>
             </div>
             <div className="tab-links">
               <TabLink to="tab3">Privacy</TabLink>
@@ -147,9 +158,22 @@ const ProfileSection = () => {
               <TabLink to="tab4">Membership</TabLink>
             </div>
           </div>
+
+          {/* <div>
+            <article>
+              <p>asd</p>
+              <div>
+                <Link href={``}>
+                  <a>
+                    <div className="postMeta">NAME symbol EXAMPLE DATE</div>
+                  </a>
+                </Link>
+              </div>
+            </article>
+          </div> */}
           <div className="fl w-50">
             <TabContent for="tab1">
-              <div className="w-100 w-50-ns">
+              <div className="">
                 <form onSubmit={handleSubmit}>
                   <label htmlFor="name">
                     Name
@@ -160,6 +184,18 @@ const ProfileSection = () => {
                       type="text"
                       placeholder="Your name"
                       ref={nameRef}
+                    />
+                  </label>
+                  <label htmlFor="bio">
+                    <p>bio</p>
+                    <br />
+                    <input
+                      required
+                      id="bio"
+                      name="bio"
+                      type="text"
+                      placeholder="Your bio"
+                      ref={bioRef}
                     />
                   </label>
                   <label htmlFor="pronouns">
@@ -194,6 +230,17 @@ const ProfileSection = () => {
                       ref={symbolRef}
                     />
                   </label>
+                  <button disabled={isUpdating} type="submit">
+                    Save
+                  </button>{" "}
+                </form>
+              </div>
+            </TabContent>
+            <TabContent for="tab2">
+              <div className="w-100 w-50-ns">
+                <form onSubmit={handleSubmit}>
+                  <h2>Coming Soon</h2>
+                  <p>What is this for</p>
                   <label htmlFor="pronouns">
                     themeBackgroundColor
                     <input
@@ -205,7 +252,7 @@ const ProfileSection = () => {
                       ref={themeBackgroundColorRef}
                     />
                   </label>
-                  {/* <label htmlFor="pronouns">
+                  <label htmlFor="themeHighlightColor">
                     themeHighlightColor
                     <input
                       required
@@ -215,18 +262,8 @@ const ProfileSection = () => {
                       placeholder="#000000"
                       ref={themeHighlightColorRef}
                     />
-                  </label> */}
-                  <button disabled={isUpdating} type="submit">
-                    Save
-                  </button>{" "}
-                </form>
-              </div>
-            </TabContent>
-            <TabContent for="tab2">
-              <div className="w-100 w-50-ns">
-                <form onSubmit={handleSubmit}>
-                  <h2>Coming Soon</h2>
-                  <label htmlFor="tinyprofilecard">
+                  </label>
+                  {/* <label htmlFor="tinyprofilecard">
                     TinyProfile Card
                     <input
                       type="file"
@@ -235,7 +272,7 @@ const ProfileSection = () => {
                       accept="image/png, image/jpeg"
                       ref={profilePictureRef}
                     />
-                  </label>
+                  </label>*/}
                   <button disabled={isUpdating} type="submit">
                     Save
                   </button>
@@ -276,6 +313,14 @@ const ProfileSection = () => {
               <div className="w-100 w-50-ns">
                 <form onSubmit={handleSubmit}>
                   <h2>Coming Soon</h2>
+                  <p>
+                    In the future we will have direct intorgration with stripe
+                    but for not please use
+                    <Link href="/forget-password">
+                      <a>Ko-Fi</a>
+                    </Link>{" "}
+                    and choose monthy as the contribution level.
+                  </p>
                   <button disabled={isUpdating} type="submit">
                     Save
                   </button>

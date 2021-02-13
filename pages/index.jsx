@@ -47,6 +47,7 @@ const IndexPage = () => {
               <br />
               Have a wonderful day.~*
             </p>
+            <div className="hero-text ascii"></div>
           </>
         ) : (
           <>

@@ -41,16 +41,16 @@ export default function Footer({ post }) {
         `}
       </style>
       <footer className="">
-        <Link href="/">
+        {/* <Link href="https://github.com/tiny-factories/code-of-conduct">
           <a className="nav-item">privacy /</a>
-        </Link>
-        <Link href="/">
+        </Link> */}
+        <Link href="https://github.com/tiny-factories/code-of-conduct">
           <a className="nav-item">code of conduct /</a>
         </Link>
         <Link href="https://github.com/tiny-factories/tiny-garden">
           <a className="nav-item">source code /</a>
         </Link>
-        <Link href="https://www.websitecarbon.com/website/preview-garden-tinyfactories-space/">
+        <Link href="https://www.websitecarbon.com/website/tiny-garden/">
           <a className="nav-item">carbon</a>
         </Link>
       </footer>
