@@ -17,7 +17,7 @@ function Post({ post }) {
         {`
           article {
             margin: auto;
-            max-width: 500px;
+            width: 500px;
             box-sizing: border-box;
             padding: 1.5rem;
             margin-bottom: 1rem;
@@ -34,9 +34,71 @@ function Post({ post }) {
             line-height: 18px;
             opacity: 0.5;
           }
+          .twitter {
+          }
+          .newsletter {
+          }
+          .post {
+          }
+          .blog {
+          }
+          .rss {
+          }
         `}
       </style>
-      {post.type === "post" && user && (
+      {user && (
+        <>
+          <div
+            className="{post.type}"
+            style={{
+              border: `1px solid ${user.themeHighlight}`,
+            }}
+          >
+            {" "}
+            <p>FROM {post.type}</p>
+          </div>
+          <article
+            style={{
+              background: `${user.themeBackground}`,
+              border: `1px solid ${user.themeHighlight}`,
+            }}
+          >
+            <Link href={`${post.externalUrl}`}>
+              <a>
+                <div>
+                  <p>{post.content}</p>
+                </div>
+                <div className="postMeta">
+                  {new Date(post.createdAt).toLocaleString()}
+                </div>
+              </a>
+            </Link>
+          </article>
+        </>
+      )}{" "}
+      {/* {post.type === "rss" && (
+        <article
+          style={{
+            background: `${user.themeBackground}`,
+            border: `1px solid ${user.themeHighlight}`,
+          }}
+        >
+          {" "}
+          <p>FROM RSS</p>
+          <p>{post.content}</p>
+          <div>
+            <Link href={`/user/${user._id}`}>
+              <a>
+                <div className="postMeta">
+                  {user.name} {user.symbol}{" "}
+                  {new Date(post.createdAt).toLocaleString()}
+                </div>
+              </a>
+            </Link>
+          </div>
+        </article>
+      )} */}
+      {/* {user && (
         <article
           style={{
             background: `${user.themeBackground}`,
@@ -55,12 +117,12 @@ function Post({ post }) {
             </Link>
           </div>
         </article>
-      )}{" "}
+      )}{" "} */}
     </>
   );
 }
 
-const PAGE_SIZE = 30;
+const PAGE_SIZE = 10;
 {
   /* postBy={user.slackId} */
 }
@@ -106,14 +168,7 @@ export default function Posts({ creatorId }) {
   const isReachingEnd =
     isEmpty || (data && data[data.length - 1]?.posts.length < PAGE_SIZE);
   return (
-    <div
-      style={{
-        justifyContent: "center",
-        alignItems: "center",
-        margin: "auto",
-        maxWidth: "500px",
-      }}
-    >
+    <div>
       {posts.map((post) => (
         <Post key={post._id} post={post} />
       ))}
@@ -122,11 +177,7 @@ export default function Posts({ creatorId }) {
           type="button"
           style={{
             background: "transparent",
-            color: "#000000",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: "auto",
-            border: "1px solid #000000",
+            color: "#000",
           }}
           onClick={() => setSize(size + 1)}
           disabled={isReachingEnd || isLoadingMore}
