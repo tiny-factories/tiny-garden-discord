@@ -51,25 +51,30 @@ export default function UserPage({ user }) {
             color: rgba(0, 0, 0, 0.5);
           }
           .profile-card {
-
+            position: relative;
             height: 450px;
 
           }
           .profile-overlay {
-            margin: 30px;
-            padding: 30px;
+            margin: 15px;
+            padding: 15px;
+            position: absolute;
+            bottom: 0px;
 
           }
           .profile-image {
             display: inline-block;
-
             float: left;
             width: 10rem;
             height: 10rem;
-            margin-right: 3.5rem;
           }
           .profile-text {
             display: inline-block;
+            float: right;
+            width: auto;
+            padding-left: 15px;
+
+
 
           }
           .profile-bio {
@@ -77,7 +82,6 @@ export default function UserPage({ user }) {
           .feeds {
             margin: auto;
             margin-top: 5rem;
-            max-width: 500px;
           }
           .tab-container {
             display: inline-block;
@@ -120,12 +124,13 @@ export default function UserPage({ user }) {
           />
 
           <div className="profile-text">
-            <h1>
+            <p>
               {user.name}
               <span className="pronoun"> ({user.nouns})</span>
-            </h1>
+            </p>
+            <p className="profile-bio">{bio}</p>
+
           </div>
-          <p className="profile-bio">{bio}</p>
         </div>
 
         {/*
@@ -137,7 +142,7 @@ export default function UserPage({ user }) {
           )}
         </div>*/}
       </div>
-<PostEditor />
+    <PostEditor />
 
       <div className="feeds">
         <Tabs
@@ -148,6 +153,15 @@ export default function UserPage({ user }) {
           <div className="tab-container">
             <div className="tab-links">
               <TabLink to="tab1">All</TabLink>
+            </div>
+            <div className="tab-links">
+              <TabLink to="tab2">Twitter</TabLink>
+            </div>
+            <div className="tab-links">
+              <TabLink to="tab2">Twitter</TabLink>
+            </div>
+            <div className="tab-links">
+              <TabLink to="tab2">Twitter</TabLink>
             </div>
             <div className="tab-links">
               <TabLink to="tab2">Twitter</TabLink>

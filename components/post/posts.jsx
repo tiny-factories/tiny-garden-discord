@@ -18,10 +18,12 @@ function Post({ post }) {
         {`
           article {
             margin: auto;
-            max-width: 500px;
             box-sizing: border-box;
             padding: 1.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 5rem;
+          }
+          p{
+            width:100%
           }
           div:hover {
           }
@@ -35,6 +37,9 @@ function Post({ post }) {
             line-height: 18px;
             opacity: 0.5;
           }
+          .og-media{float:right;
+            width:100%;}
+
         `}
       </style>
       {post.type === "post" && user && (
@@ -62,7 +67,7 @@ function Post({ post }) {
            }}>
              <a alt="(opens in new tab)" href={post.externalSourceUrl} target="_blank" rel="noopener noreferrer">
 
-               <img src={post.openGraphImage}/>
+               <img className="og-media" src={post.openGraphMedia}/>
                <div>
                 <p>{post.openGraphTitle}</p>
                 <p>{post.openGraphDescription}</p>

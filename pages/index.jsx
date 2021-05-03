@@ -12,11 +12,9 @@ const IndexPage = () => {
         {`
           .container {
             margin: auto;
-            max-width: 500px;
           }
           .hero-text {
             margin: auto;
-            max-width: 500px;
             padding-bottom: 25px;
           }
 
