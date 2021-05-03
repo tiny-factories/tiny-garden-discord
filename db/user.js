@@ -36,6 +36,7 @@ export async function insertUser(
       _id: nanoid(12),
       emailVerified: false,
       profilePicture,
+      profileCover,
       username: "",
       email,
       password,

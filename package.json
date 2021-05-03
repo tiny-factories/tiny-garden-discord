@@ -26,6 +26,7 @@
     "connect-mongo": "^3.2.0",
     "dotenv": "^8.2.0",
     "express-session": "^1.17.1",
+    "fetch-opengraph": "^1.0.23",
     "mongodb": "^3.6.3",
     "multer": "^1.4.2",
     "nanoid": "^3.1.18",

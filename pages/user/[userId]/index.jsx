@@ -5,6 +5,7 @@ import Error from "next/error";
 import { all } from "@/middlewares/index";
 import { useCurrentUser } from "@/hooks/index";
 import Posts from "@/components/post/posts";
+import PostEditor from "@/components/post/editor";
 import Narratives from "@/components/narrative/posts";
 import { extractUser } from "@/lib/api-helpers";
 import { findUserById } from "@/db/index";
@@ -18,6 +19,7 @@ export default function UserPage({ user }) {
     bio,
     nouns,
     profilePicture,
+    profileCover,
     _id,
     creatorId,
     themeBackground,
@@ -29,29 +31,10 @@ export default function UserPage({ user }) {
     <>
       <style jsx>
         {`
-          .card {
-            margin: auto;
-            margin-top: 2.55rem;
-            margin-bottom: 2.5rem;
-            max-width: 500px;
-            display: flex;
-            alignitems: center;
-          }
-          h2 {
-            text-align: left;
-            margin-right: 0.5rem;
-          }
           button {
             margin: 0 0.25rem;
           }
-          img {
-            width: 10rem;
-            height: 10rem;
-            margin-right: 3.5rem;
-          }
-          div {
-            color: #777;
-          }
+
           p {
             font-family: monospace;
             color: #444;
@@ -66,6 +49,30 @@ export default function UserPage({ user }) {
             font-size: 12px;
             line-height: 16px;
             color: rgba(0, 0, 0, 0.5);
+          }
+          .profile-card {
+
+            height: 450px;
+
+          }
+          .profile-overlay {
+            margin: 30px;
+            padding: 30px;
+
+          }
+          .profile-image {
+            display: inline-block;
+
+            float: left;
+            width: 10rem;
+            height: 10rem;
+            margin-right: 3.5rem;
+          }
+          .profile-text {
+            display: inline-block;
+
+          }
+          .profile-bio {
           }
           .feeds {
             margin: auto;
@@ -83,33 +90,54 @@ export default function UserPage({ user }) {
       <Head>
         <title>{name}</title>
       </Head>
-      <div className="card">
-        <img
-          src={profilePicture || defaultProfilePicture(_id)}
+
+      <div
+        className="profile-card"
+        style={{
+          background: `${user.themeBackground}`,
+          border: `1px solid ${user.themeHighlight}`,
+          backgroundImage: `url(${user.profileCover})`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div
+          className="profile-overlay"
           style={{
             background: `${user.themeBackground}`,
             border: `1px solid ${user.themeHighlight}`,
           }}
-          alt={name}
-        />
+        >
+          <img
+            className="profile-image"
+            src={profilePicture || defaultProfilePicture(_id)}
+            style={{
+              background: `${user.themeBackground}`,
+              border: `1px solid ${user.themeHighlight}`,
+            }}
+            alt={name}
+          />
 
+          <div className="profile-text">
+            <h1>
+              {user.name}
+              <span className="pronoun"> ({user.nouns})</span>
+            </h1>
+          </div>
+          <p className="profile-bio">{bio}</p>
+        </div>
+
+        {/*
         <div>
-          <h2>
-            {user.name}
-            <span className="pronoun"> ({user.nouns})</span>
-          </h2>
-          <p>{bio}</p>
-          <Link href={`${user.linkUrl}`}>
-            <a>{user.linkName} ↗</a>
-          </Link>
-
           {isCurrentUser && (
             <Link href="/settings">
               <button type="button">Edit</button>
             </Link>
           )}
-        </div>
+        </div>*/}
       </div>
+<PostEditor />
 
       <div className="feeds">
         <Tabs
@@ -122,7 +150,7 @@ export default function UserPage({ user }) {
               <TabLink to="tab1">All</TabLink>
             </div>
             <div className="tab-links">
-              <TabLink to="tab2">Personal</TabLink>
+              <TabLink to="tab2">Twitter</TabLink>
             </div>
           </div>
 
