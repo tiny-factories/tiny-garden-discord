@@ -1,7 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useCurrentUser } from "@/hooks/index";
+import dynamic from 'next/dynamic'
+
+const QuillNoSSRWrapper = dynamic(import('react-quill'), {
+  ssr: false,
+  loading: () => <p>Loading ...</p>,
+})
+
+const modules = {
+  toolbar: [
+    [{ header: '1' }, { header: '2' }, { font: [] }],
+    [{ size: [] }],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [
+      { list: 'ordered' },
+      { list: 'bullet' },
+      { indent: '-1' },
+      { indent: '+1' },
+    ],
+    ['link', 'image', 'video'],
+    ['clean'],
+  ],
+  clipboard: {
+    // toggle to add extra line breaks when pasting HTML:
+    matchVisual: false,
+  },
+}
+/*
+ * Quill editor formats
+ * See https://quilljs.com/docs/formats/
+ */
+const formats = [
+  'header',
+  'font',
+  'size',
+  'bold',
+  'italic',
+  'underline',
+  'strike',
+  'blockquote',
+  'list',
+  'bullet',
+  'indent',
+  'link',
+  'image',
+  'video',
+]
+
+
 
 export default function PostEditor() {
+
+
+
+
+
+
   const [user] = useCurrentUser();
 
   const [msg, setMsg] = useState(null);
@@ -59,13 +113,16 @@ export default function PostEditor() {
       </style>
       <div>
         <p>{msg}</p>
+        {/* <QuillNoSSRWrapper modules={modules} formats={formats} theme="snow" />
+<QuillNoSSRWrapper value={this.state.value} modules={modules} formats={formats} theme="snow" /> */}
+
         <form
           onSubmit={hanldeSubmit}
           style={{ flexDirection: "row" }}
           autoComplete="off"
         >
           <label htmlFor="name">
-            <input
+            <textarea
               name="content"
               type="text"
               placeholder="write and share a lil note, or life upddate, or sth silly"
