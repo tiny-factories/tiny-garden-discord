@@ -1,6 +1,7 @@
 import nc from "next-connect";
 import { all } from "@/middlewares/index";
 import { getPosts, insertPost } from "@/db/index";
+import { fetch } from 'fetch-opengraph';
 
 const handler = nc();
 
@@ -26,17 +27,33 @@ handler.get(async (req, res) => {
 });
 
 handler.post(async (req, res) => {
+
+
+
   if (!req.user) {
     return res.status(401).send("unauthenticated");
   }
 
   if (!req.body.content)
     return res.status(400).send("You must write something");
+    console.log(req.body.url)
 
-  const post = await insertPost(req.db, {
+    const data = await fetch(req.body.url);
+    console.log(data)
+
+    const post = await insertPost(req.db, {
     content: req.body.content,
+    openGraphTitle: data.title,
+    openGraphDescription: data.description,
+    openGraphMedia: data.image,
+    externalSourceUrl: req.body.url,
+
     creatorId: req.user._id,
   });
+
+
+
+
 
   return res.json({ post });
 });

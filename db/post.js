@@ -33,7 +33,7 @@ export async function getPosts(db, from = new Date(), by, limit) {
 //     .toArray();
 // }
 
-export async function insertPost(db, { content, creatorId }) {
+export async function insertPost(db, { content, externalSourceUrl,openGraphTitle,openGraphDescription, openGraphMedia, creatorId }) {
   return db
     .collection("posts")
     .insertOne({
@@ -43,6 +43,11 @@ export async function insertPost(db, { content, creatorId }) {
       source: "website",
       content,
       discordChannelId: "",
+      discordChannelId: "",
+      externalSourceUrl,
+      openGraphTitle,
+      openGraphDescription,
+      openGraphMedia,
       createdAt: new Date(),
       updateddAt: new Date(),
     })

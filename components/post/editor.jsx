@@ -18,12 +18,13 @@ export default function PostEditor() {
     e.preventDefault();
     const body = {
       type: "post",
-
       content: e.currentTarget.content.value,
+      url: e.currentTarget.url.value,
       discordChannelId: "",
     };
     if (!e.currentTarget.content.value) return;
     e.currentTarget.content.value = "";
+
     const res = await fetch("/api/posts", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -68,7 +69,11 @@ export default function PostEditor() {
               name="content"
               type="text"
               placeholder="write and share a lil note, or life upddate, or sth silly"
-            />
+            /> <input
+            name="url"
+            type="url"
+            placeholder="optional url, or source"
+          />
           </label>
           <button type="submit">Post</button>
         </form>

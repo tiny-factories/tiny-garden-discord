@@ -6,6 +6,7 @@ import fetcher from "@/lib/fetch";
 import { defaultProfilePicture } from "@/lib/default";
 
 function Post({ post }) {
+
   const user = useUser(post.creatorId);
   {
     /* const user = useUser(post.postBy); */
@@ -44,6 +45,40 @@ function Post({ post }) {
           }}
         >
           <p>{post.content}</p>
+
+
+
+
+          {!post.externalSourceUrl ? (
+            <>
+             <p>⚠️ Intentionally empty will remove later</p>
+            </>
+          ) : (
+            <>
+           <div className=""
+           style={{
+             background: `${user.themeBackground}`,
+             border: `1px solid ${user.themeHighlight}`,
+           }}>
+             <a alt="(opens in new tab)" href={post.externalSourceUrl} target="_blank" rel="noopener noreferrer">
+
+               <img src={post.openGraphImage}/>
+               <div>
+                <p>{post.openGraphTitle}</p>
+                <p>{post.openGraphDescription}</p>
+               </div>
+             </a>
+           </div>
+            </>
+          )}
+
+
+
+
+
+
+
+
           <div>
             <Link href={`/user/${user._id}`}>
               <a>
