@@ -16,40 +16,24 @@ const IndexPage = () => {
           .hero-text {
             margin: auto;
             padding-bottom: 25px;
+            padding-top: 50px;
+
           }
 
-          .ascii {
-            font-family: "Menlo Regular", monospace;
-            font-family: monospace;
-            white-space: pre;
-            text-align: left;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            speak: never;
-            speak-as: spell-out;
-          }
-          .small-ascii {
-            font-size: 9px;
-            margin-bottom: 30px;
-          }
+
         `}
       </style>
       <div>
         {!user ? (
           <>
           <div>
+            <p className="hero-text">A public garden for independent creatives and small teams.</p>
+            <p className="hero-text">As an independent creator or small team member, you need to wear many hats. And even if you like hats that can be hard. We are here to remove the stress of publishing changelogs, community updates, newsletters, and all the other things you need to do to keep your community engaged. Your tiny garden will allow you to publish work from other platforms to one central profile, so you can keep making great things.</p>
+            <p className="hero-text">Our beta will be launching in the summer of 2021, you can follow our <a href="https://futureland.tv/gndclouds/tinygarden"><u>dev notes</u></a> for more behind-the-scenes info or the <a href="https://tinygarden.substack.com/embed"><u>newsletter</u></a> for learning about our beta release.</p>
 
-            <img />
-            <h1>A universal micro-blogg, for creators to better main connect with their community</h1>
-            <p className="hero-text">
-            It’s really hard to keep your work all in one place, you often ware mant hats and share your work across sites. We give one you place to show all your work from across the internet in one place.
-              </p>
           </div>
-
           <div>
-            <h2>What Creators are saying</h2>
+            {/* <h2>What Creators are saying</h2> */}
           </div>
 
           <div>

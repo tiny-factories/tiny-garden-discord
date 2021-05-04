@@ -52,7 +52,10 @@ export default function Navagation({ post }) {
               <Link href="/blog">
                 <a className="nav-item">Blog</a>
               </Link>
-              <Link href="/signup">
+              <Link href="/user/MQc2aPSY0763">
+                <a className="nav-item">Demo</a>
+              </Link>
+              {/* <Link href="/signup"> */}
          <a className="nav-item">Sign Up</a>
        </Link>
             </>

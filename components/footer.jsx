@@ -41,18 +41,43 @@ export default function Footer({ post }) {
         `}
       </style>
       <footer className="">
-        {/* <Link href="https://github.com/tiny-factories/code-of-conduct">
-          <a className="nav-item">privacy /</a>
-        </Link> */}
-        <Link href="https://github.com/tiny-factories/code-of-conduct">
-          <a className="nav-item">code of conduct /</a>
+        <Link href="/">
+          <a>
+            Crafted by Tiny Factories ↗
+          </a>
         </Link>
-        <Link href="https://github.com/tiny-factories/tiny-garden">
-          <a className="nav-item">source code /</a>
+        <div>
+        <Link href="/">
+          <a className="nav-item">
+            Code of Conduct
+          </a>
         </Link>
-        <Link href="https://www.websitecarbon.com/website/tiny-garden/">
-          <a className="nav-item">carbon</a>
+        <Link href="/">
+          <a className="nav-item">
+            Privacy
+          </a>
         </Link>
+        <Link href="/">
+          <a className="nav-item">
+            RSS
+          </a>
+        </Link>
+        <Link href="/">
+          <a className="nav-item">
+     Newsletter
+          </a>
+        </Link>
+        <Link href="/">
+          <a className="nav-item">
+            GitHub ↗
+          </a>
+        </Link>
+        <Link href="/">
+          <a className="nav-item">
+            Carbon ↗
+          </a>
+        </Link>
+        </div>
       </footer>
     </>
   );
