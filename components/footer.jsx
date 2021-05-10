@@ -40,43 +40,29 @@ export default function Footer({ post }) {
           }
         `}
       </style>
-      <footer className="">
-        <Link href="/">
-          <a>
-            Crafted by Tiny Factories ↗
-          </a>
+      <footer className="fl w-100">
+        <Link href="https://tinyfactories.space">
+          <a>Crafted by Tiny Factories ↗</a>
         </Link>
         <div>
-        <Link href="/">
-          <a className="nav-item">
-            Code of Conduct
-          </a>
-        </Link>
-        <Link href="/">
-          <a className="nav-item">
-            Privacy
-          </a>
-        </Link>
-        <Link href="/">
-          <a className="nav-item">
-            RSS
-          </a>
-        </Link>
-        <Link href="/">
-          <a className="nav-item">
-     Newsletter
-          </a>
-        </Link>
-        <Link href="/">
-          <a className="nav-item">
-            GitHub ↗
-          </a>
-        </Link>
-        <Link href="/">
-          <a className="nav-item">
-            Carbon ↗
-          </a>
-        </Link>
+          <Link href="/code-of-conduct">
+            <a className="nav-item">Code of Conduct</a>
+          </Link>
+          <Link href="/privacy">
+            <a className="nav-item">Privacy</a>
+          </Link>
+          <Link href="https://buttondown.email/TinyGarden/rss">
+            <a className="nav-item">RSS ↗</a>
+          </Link>
+          <Link href="https://buttondown.email/TinyGarden">
+            <a className="nav-item">Newsletter ↗</a>
+          </Link>
+          <Link href="https://github.com/tiny-factories/tiny-garden">
+            <a className="nav-item">GitHub ↗</a>
+          </Link>
+          <Link href="/carbon">
+            <a className="nav-item">Carbon ↗</a>
+          </Link>
         </div>
       </footer>
     </>

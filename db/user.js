@@ -35,8 +35,8 @@ export async function insertUser(
     .insertOne({
       _id: nanoid(12),
       emailVerified: false,
-      profilePicture,
-      profileCover,
+      profilePicture: "",
+      profileCover: "",
       username: "",
       email,
       password,
