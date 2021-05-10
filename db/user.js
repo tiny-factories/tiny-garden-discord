@@ -52,8 +52,9 @@ export async function insertUser(
       membership: "0",
       linkName: "",
       linkUrl: "",
-      profileVisibility: "",
+      profileVisibility: true,
       profilePassword: "",
+      mediaSources: [],
     })
     .then(({ ops }) => ops[0]);
 }
