@@ -58,7 +58,7 @@ const IndexPage = () => {
                 <div className="dt-ns dt--fixed-ns w-100">
                   <div className="pa3 pa4-ns dtc-ns v-mid">
                     <div>
-                      <h2 clasNames="fw4 blue mt0 mb3">
+                      <h2 className="fw4 blue mt0 mb3">
                         This is a promo title{" "}
                       </h2>
                       <p className="black-70 measure lh-copy mv0">
