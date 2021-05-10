@@ -1,37 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import Head from "next/head";
-import Router from "next/router";
 import { useCurrentUser } from "@/hooks/index";
+import { Tabs, TabLink, TabContent } from "react-tabs-redux";
 
-const ImportPage = () => {
+const ImportSection = () => {
   const [user, { mutate }] = useCurrentUser();
-  const [errorMsg, setErrorMsg] = useState("");
+  const [isUpdating, setIsUpdating] = useState(false);
+
+  const mediaSourcesRef = useRef();
+
+  const [msg, setMsg] = useState({ message: "", isError: false });
+
   useEffect(() => {
-    // redirect to home if user is authenticated
-    {
-      /* if (!user) Router.replace("/login");  */
-    }
+    mediaSourcesRef.current.value = user.mediaSources;
   }, [user]);
 
-  const handleSubmit = async (e) => {
-    //TODO: Pull current content and update profile in DB
-    e.preventDefault();
-    const body = {
-      email: e.currentTarget.email.value,
-      name: e.currentTarget.name.value,
-      password: e.currentTarget.password.value,
-    };
-    const res = await fetch("/api/users", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (isUpdating) return;
+    setIsUpdating(true);
+    const formData = new FormData();
+
+    formData.append("name", mediaSourcesRef.current.value);
+    const res = await fetch("/api/user", {
+      method: "PATCH",
+      body: formData,
     });
-    if (res.status === 201) {
-      const userObj = await res.json();
-      mutate(userObj);
+    if (res.status === 200) {
+      const userData = await res.json();
+      mutate({
+        user: {
+          ...user,
+          ...userData.user,
+        },
+      });
+      setMsg({ message: "Profile updated" });
     } else {
-      setErrorMsg(await res.text());
+      setMsg({ message: await res.text(), isError: true });
     }
+    setIsUpdating(false);
   };
 
   return (
@@ -39,78 +47,69 @@ const ImportPage = () => {
       <Head>
         <title>Tiny Garden | Import</title>
       </Head>
-      {!user ? (
-        <>
-          <p>List of imports </p>
-        </>
-      ) : (
-        <>
-          <section className="ph3 ph5-ns pv5">
-            <article className="">
-              <div className="dt-ns dt--fixed-ns w-100">
-                <div className="pa3 pa4-ns dtc-ns v-mid">
-                  <div>
-                    <p className="measure mv0">
-                      Welcome to 🌱 tiny garden, we are a microblog by Tiny
-                      Factories.
-                    </p>
-                    <br />
-
-                    <p className="measure mv0">
-                      For Indivuals We currently support importing form RSS such
-                      as newsletters, blog, or futureland journals.
-                    </p>
-                    <br />
-                    <p className="measure mv0">
-                      For Teams Alternatively you can connect a Discord or Slack
-                      channel by installing out Gardening Bot
-                    </p>
-                  </div>
-                </div>
-
-                <div className="pa3 pa4-ns dtc-ns v-mid">
-                  <form onSubmit={handleSubmit}>
-                    {errorMsg ? (
-                      <p style={{ color: "red" }}>{errorMsg}</p>
-                    ) : null}
-                    <p className="fl w-100">Name</p>
-                    <label className="fl w-100" htmlFor="name">
-                      <input
-                        id="name"
-                        name="name"
-                        type="text"
-                        placeholder="Your name"
-                      />
-                    </label>
-                    <p className="fl w-100">Name</p>
-                    <label className="fl w-100" htmlFor="name">
-                      <input
-                        id="name"
-                        name="name"
-                        type="text"
-                        placeholder="Your name"
-                      />
-                    </label>
-                    <p className="fl w-100">Name</p>
-                    <label className="fl w-100" htmlFor="name">
-                      <input
-                        id="name"
-                        name="name"
-                        type="text"
-                        placeholder="Your name"
-                      />
-                    </label>
-
-                    <button type="submit">Import</button>
-                  </form>
-                </div>
+      <section className="">
+        <article className="bg-light-gray">
+          <div className="dt-ns dt--fixed-ns w-100">
+            <div className="pa3 pa4-ns dtc-ns v-mid">
+              <div>
+                <h2>For Indivuals</h2>
+                <p className="measure mv0">
+                  We currently support importing form RSS such as newsletters,
+                  blog, or futureland journals.
+                </p>
+                <br />
+                <h2>For Teams</h2>
+                <p className="measure mv0">
+                  You can connect a Discord or Slack channel by installing out
+                  Gardening Bot
+                </p>
               </div>
-            </article>
-          </section>
-        </>
-      )}
+            </div>
+
+            <div className="pa3 pa4-ns dtc-ns v-mid">
+              <form onSubmit={handleSubmit}>
+                <label htmlFor="mediaSources">
+                  <textarea
+                    className="fl w-100"
+                    required
+                    id="mediaSources"
+                    name="mediaSources"
+                    type="text"
+                    placeholder="https://gndclouds.cc/feed/rss"
+                    ref={mediaSourcesRef}
+                  ></textarea>
+                </label>
+                <button disabled={isUpdating} type="submit">
+                  Import
+                </button>{" "}
+              </form>
+            </div>
+          </div>
+        </article>
+      </section>
     </>
   );
 };
 
-export default ImportPage;
+const SettingPage = () => {
+  const [user] = useCurrentUser();
+
+  if (!user) {
+    return (
+      <>
+        <h1>Interested in importing other services to your Tiny Garden?</h1>
+        <p>
+          We currently support importing any <a>RSS</a> feed and have a{" "}
+          <a>plugin for discord</a> allowing you to post from any channel.
+        </p>
+      </>
+    );
+  }
+  return (
+    <>
+      <ImportSection />
+    </>
+  );
+};
+
+export default SettingPage;

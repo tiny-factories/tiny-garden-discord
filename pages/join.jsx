@@ -8,7 +8,7 @@ const SignupPage = () => {
   const [errorMsg, setErrorMsg] = useState("");
   useEffect(() => {
     // redirect to home if user is authenticated
-    if (user) Router.replace("/");
+    if (user) Router.replace("/import");
   }, [user]);
 
   const handleSubmit = async (e) => {
@@ -41,7 +41,7 @@ const SignupPage = () => {
           <h2> </h2>
         </div>
         <section className="ph3 ph5-ns pv5">
-          <article className="">
+          <article className="bg-light-gray">
             <div className="dt-ns dt--fixed-ns w-100">
               <div className="pa3 pa4-ns dtc-ns v-mid">
                 <div>
