@@ -26,6 +26,7 @@ const SignupPage = () => {
     if (res.status === 201) {
       const userObj = await res.json();
       mutate(userObj);
+      Router.replace("/import");
     } else {
       setErrorMsg(await res.text());
     }

@@ -27,7 +27,7 @@ export async function updateUserById(db, id, update) {
 
 export async function insertUser(
   db,
-  { email, password, bio = "", name, profilePicture }
+  { email, password, bio = "", name, profilePicture, mediaSources }
 ) {
   //TODO: @will add other user info here
   return db
@@ -54,7 +54,7 @@ export async function insertUser(
       linkUrl: "",
       profileVisibility: true,
       profilePassword: "",
-      mediaSources: [],
+      mediaSources: "",
     })
     .then(({ ops }) => ops[0]);
 }

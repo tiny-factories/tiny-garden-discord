@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import Router from "next/router";
 import Link from "next/link";
 import Head from "next/head";
 import { useCurrentUser } from "@/hooks/index";
@@ -22,11 +23,12 @@ const ImportSection = () => {
     setIsUpdating(true);
     const formData = new FormData();
 
-    formData.append("name", mediaSourcesRef.current.value);
+    formData.append("mediaSources", mediaSourcesRef.current.value);
     const res = await fetch("/api/user", {
       method: "PATCH",
       body: formData,
     });
+    console.log(formData);
     if (res.status === 200) {
       const userData = await res.json();
       mutate({
@@ -35,7 +37,9 @@ const ImportSection = () => {
           ...userData.user,
         },
       });
+
       setMsg({ message: "Profile updated" });
+      Router.replace(`/user/${user._id}`);
     } else {
       setMsg({ message: await res.text(), isError: true });
     }
@@ -77,7 +81,11 @@ const ImportSection = () => {
                     type="text"
                     placeholder="https://gndclouds.cc/feed/rss"
                     ref={mediaSourcesRef}
-                  ></textarea>
+                    rows="5"
+                    cols="33"
+                  >
+                    >
+                  </textarea>
                 </label>
                 <button disabled={isUpdating} type="submit">
                   Import
