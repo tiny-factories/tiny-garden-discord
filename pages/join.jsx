@@ -46,21 +46,15 @@ const SignupPage = () => {
             <div className="dt-ns dt--fixed-ns w-100">
               <div className="pa3 pa4-ns dtc-ns v-mid">
                 <div>
-                  <p className="measure mv0">
-                    Welcome to 🌱 tiny garden, we are a microblog by Tiny
-                    Factories.
-                  </p>
+                  <p className="measure mv0">Welcome to 🌱 tiny garden!</p>
                   <br />
 
                   <p className="measure mv0">
                     Since you are joining us in the early days your account will
-                    remain free forever.
+                    remain <b>free forever</b>.
                   </p>
                   <br />
-                  <p className="measure mv0">
-                    By creating an account, you agree to the Tiny Factoires
-                    Terms of Services and Privacy policy
-                  </p>
+                  <p className="measure mv0"></p>
                 </div>
               </div>
 
@@ -84,7 +78,7 @@ const SignupPage = () => {
                       id="email"
                       name="email"
                       type="email"
-                      placeholder="Email address"
+                      placeholder="hello@tiny.garden"
                     />
                   </label>
                   <p className="fl w-100">Password</p>
@@ -94,7 +88,7 @@ const SignupPage = () => {
                       id="password"
                       name="password"
                       type="password"
-                      placeholder="Create a password"
+                      placeholder="············"
                     />
                   </label>
                   <button type="submit">Create Account</button>
