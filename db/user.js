@@ -36,7 +36,7 @@ export async function insertUser(
       _id: nanoid(12),
       emailVerified: false,
       profilePicture: "",
-      profileCover: "",
+      profileCover: "https://source.unsplash.com/user/gndclouds",
       username: "",
       email,
       password,
