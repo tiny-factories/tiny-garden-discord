@@ -51,9 +51,10 @@ export default function UserPage({ user }) {
             color: rgba(0, 0, 0, 0.5);
           }
           .profile-card {
+            margin-bottom: 30px;
             position: relative;
             height: 450px;
-            margin-bottom: 30px;
+            border-radius: 3px;
           }
           .profile-overlay {
             margin: 15px;
@@ -61,12 +62,14 @@ export default function UserPage({ user }) {
             position: absolute;
             bottom: 0px;
             width: calc(100% - 30px);
+            border-radius: 3px;
           }
           .profile-image {
             display: inline-block;
             float: left;
             width: 10rem;
             height: 10rem;
+            border-radius: 3px;
           }
           .profile-text {
             display: inline-block;
@@ -84,6 +87,9 @@ export default function UserPage({ user }) {
           }
           .tab-links {
             display: inline-block;
+            background: #ffffff;
+            border: 1px solid #2860cc;
+            border-radius: 3px;
           }
         `}
       </style>
@@ -140,7 +146,9 @@ export default function UserPage({ user }) {
       <PostEditor />
 
       <div className="feeds">
-        <Tabs
+        <Posts creatorId={user._id} />
+
+        {/* <Tabs
           disableInlineStyles={false}
           className="tabs"
           onChange={(tab) => console.log(`Tab selected: ${tab}`)}
@@ -166,14 +174,14 @@ export default function UserPage({ user }) {
           <div className="content">
             <TabContent for="tab1">
               <Posts creatorId={user._id} />
-              {/* <Posts creatorId={user.creatorId} /> */}
+
             </TabContent>
             <TabContent for="tab2">
               <p>🚧 This will show all posts you share on the plaform</p>
               <Narratives creatorId={user._id} />
             </TabContent>
           </div>
-        </Tabs>
+        </Tabs> */}
       </div>
     </>
   );
