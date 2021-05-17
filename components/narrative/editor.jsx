@@ -41,7 +41,6 @@ export default function PostEditor() {
         {`
           div {
             margin: auto;
-            width: 500px;
           }
           input {
             background: #ffffff;
