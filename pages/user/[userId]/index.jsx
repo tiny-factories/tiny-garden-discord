@@ -53,14 +53,14 @@ export default function UserPage({ user }) {
           .profile-card {
             position: relative;
             height: 450px;
-
+            margin-bottom: 30px;
           }
           .profile-overlay {
             margin: 15px;
             padding: 15px;
             position: absolute;
             bottom: 0px;
-
+            width: calc(100% - 30px);
           }
           .profile-image {
             display: inline-block;
@@ -70,12 +70,8 @@ export default function UserPage({ user }) {
           }
           .profile-text {
             display: inline-block;
-            float: right;
             width: auto;
             padding-left: 15px;
-
-
-
           }
           .profile-bio {
           }
@@ -129,7 +125,6 @@ export default function UserPage({ user }) {
               <span className="pronoun"> ({user.nouns})</span>
             </p>
             <p className="profile-bio">{bio}</p>
-
           </div>
         </div>
 
@@ -142,7 +137,7 @@ export default function UserPage({ user }) {
           )}
         </div>*/}
       </div>
-    <PostEditor />
+      <PostEditor />
 
       <div className="feeds">
         <Tabs
