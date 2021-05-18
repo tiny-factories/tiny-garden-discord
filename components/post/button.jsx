@@ -41,7 +41,6 @@ export default function button() {
         {`
           div {
             margin: auto;
-            max-width: 500px;
           }
           input {
             background: #ffffff;

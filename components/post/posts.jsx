@@ -6,7 +6,6 @@ import fetcher from "@/lib/fetch";
 import { defaultProfilePicture } from "@/lib/default";
 
 function Post({ post }) {
-
   const user = useUser(post.creatorId);
   {
     /* const user = useUser(post.postBy); */
@@ -19,11 +18,20 @@ function Post({ post }) {
           article {
             margin: auto;
             box-sizing: border-box;
-            padding: 1.5rem;
             margin-bottom: 5rem;
           }
-          p{
-            width:100%
+          .content {
+            font-family: IBMPlexMono;
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+          }
+          .date {
+            margin-bottom: 30px;
+            text-align: right;
+          }
+          p {
+            width: 100%;
           }
           div:hover {
           }
@@ -35,64 +43,58 @@ function Post({ post }) {
             font-weight: normal;
             font-size: 14px;
             line-height: 18px;
-            opacity: 0.5;
           }
-          .og-media{float:right;
-            width:100%;}
-
+          .og-card {
+            border-radius: 3px;
+          }
+          .og-media {
+            float: right;
+            width: 100%;
+          }
         `}
       </style>
       {post.type === "post" && user && (
-        <article
-          style={{
-            background: `${user.themeBackground}`,
-            border: `1px solid ${user.themeHighlight}`,
-          }}
-        >
-          <p>{post.content}</p>
-
-
-
+        <article>
+          <p className="date"></p>
+          {new Date(post.createdAt).toLocaleString()}
+          <p className="content">{post.content}</p>
 
           {!post.externalSourceUrl ? (
-            <>
-             <p>⚠️ Intentionally empty will remove later</p>
-            </>
+            <></>
           ) : (
             <>
-           <div className=""
-           style={{
-             background: `${user.themeBackground}`,
-             border: `1px solid ${user.themeHighlight}`,
-           }}>
-             <a alt="(opens in new tab)" href={post.externalSourceUrl} target="_blank" rel="noopener noreferrer">
-
-               <img className="og-media" src={post.openGraphMedia}/>
-               <div>
-                <p>{post.openGraphTitle}</p>
-                <p>{post.openGraphDescription}</p>
-               </div>
-             </a>
-           </div>
+              <div
+                className="og-card"
+                style={{
+                  background: `${user.themeBackground}`,
+                  border: `1px solid ${user.themeHighlight}`,
+                }}
+              >
+                <a
+                  alt="(opens in new tab)"
+                  href={post.externalSourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img className="og-media" src={post.openGraphMedia} />
+                  <div>
+                    <p>{post.openGraphTitle}</p>
+                    <p>{post.openGraphDescription}</p>
+                  </div>
+                </a>
+              </div>
             </>
           )}
 
-
-
-
-
-
-
-
           <div>
-            <Link href={`/user/${user._id}`}>
+            {/* <Link href={`/user/${user._id}`}>
               <a>
                 <div className="postMeta">
                   {user.name} {user.symbol}{" "}
                   {new Date(post.createdAt).toLocaleString()}
                 </div>
               </a>
-            </Link>
+            </Link> */}
           </div>
         </article>
       )}{" "}
@@ -151,7 +153,6 @@ export default function Posts({ creatorId }) {
         justifyContent: "center",
         alignItems: "center",
         margin: "auto",
-        maxWidth: "500px",
       }}
     >
       {posts.map((post) => (

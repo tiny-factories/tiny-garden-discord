@@ -17,7 +17,6 @@ function Post({ post }) {
         {`
           article {
             margin: auto;
-            width: 500px;
             box-sizing: border-box;
             padding: 1.5rem;
             margin-bottom: 1rem;
