@@ -1,3 +1,4 @@
+// const withPWA = require("next-pwa");
 require("dotenv").config();
 
 module.exports = {
@@ -11,3 +12,9 @@ module.exports = {
     SESSION_SECRET: process.env.SESSION_SECRET,
   },
 };
+
+// module.exports = withPWA({
+//   pwa: {
+//     dest: "public",
+//   },
+// });
