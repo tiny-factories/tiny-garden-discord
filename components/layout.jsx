@@ -22,6 +22,33 @@ export default function Layout({ children }) {
           name="description"
           content="Tiny Garden is a public facing community around Tiny Factories."
         />
+        {/* <!-- Apple Product Support --> */}
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
+
+        <link
+          rel="apple-touch-icon"
+          href="somedir/apple-touch-icon-iphone-60x60.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="60x60"
+          href="somedir/apple-touch-icon-ipad-76x76.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="114x114"
+          href="somedir/apple-touch-icon-iphone-retina-120x120.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="144x144"
+          href="somedir/apple-touch-icon-ipad-retina-152x152.png"
+        />
 
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://garden.tinyfactories.space/" />
@@ -46,7 +73,12 @@ export default function Layout({ children }) {
           property="twitter:image"
           content="/public/tinygarden-opengraph.png"
         />
-        <script async defer data-website-id="fc6b6113-ad42-45f5-99c1-a36b8667e440" src="https://umami.tinyfactories.space/umami.js"></script>
+        <script
+          async
+          defer
+          data-website-id="fc6b6113-ad42-45f5-99c1-a36b8667e440"
+          src="https://umami.tinyfactories.space/umami.js"
+        ></script>
         <script
           src="https://unpkg.com/website-carbon-badges@1.1.1/b.min.js"
           defer

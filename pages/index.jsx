@@ -61,7 +61,7 @@ const IndexPage = () => {
                       method="post"
                       target="popupwindow"
                       onsubmit="window.open('https://buttondown.email/TinyGarden', 'popupwindow')"
-                      class="embeddable-buttondown-form"
+                      className="embeddable-buttondown-form"
                     >
                       <label for="bd-email">Enter your email</label>
                       <input type="email" name="email" id="bd-email" />
